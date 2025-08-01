@@ -1,0 +1,70 @@
+/* ================================
+   NAVBAR BASE STYLES
+   ================================ */
+.custom-navbar {
+  background-color: rgba(43, 43, 43, 0.42);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.custom-navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ================================
+   NAV LINKS BASE STYLE
+   ================================ */
+.nav-link {
+  color: white !important;
+  font-weight: 500;
+  margin: 0 12px;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+/* ================================
+   HOVER ANIMATION
+   ================================ */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffcc00;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ================================
+   ACTIVE PAGE STYLES
+   ================================ */
+.nav-link.active::after {
+  width: 100%;
+  background-color: #ffcc00;
+}
+
+.nav-link.active {
+  color: #ffcc00 !important;
+}
+
+/* ================================
+   LOGO STYLES
+   ================================ */
+.navbar-brand img {
+  padding-left: 60px;
+  max-height: 70px;
+}
+
+/* ================================
+   HOME BACKGROUND
+   ================================ */
+#home {
+  background: url('img/bghome.png') no-repeat center center;
+  background-size: cover;
+}
