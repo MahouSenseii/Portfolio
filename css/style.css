@@ -1,3 +1,51 @@
+
+@font-face {
+  font-family: 'Miss Fajardose';
+  src: url('../fonts/Miss_Fajardose/MissFajardose-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Eagle Lake';
+  src: url('../fonts/Eagle_Lake/EagleLake-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Pirata One';
+  src: url('../fonts/Pirata_One/PirataOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Almendra SC';
+  src: url('../fonts/Almendra_SC/AlmendraSC-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cinzel Decorative';
+  src: url('../fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Cinzel Decorative';
+  src: url('../fonts/Cinzel_Decorative/CinzelDecorative-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Cinzel Decorative';
+  src: url('../fonts/Cinzel_Decorative/CinzelDecorative-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'MedievalSharp';
+  src: url('../fonts/MedievalSharp/MedievalSharp-Regular.ttf') format('truetype');
+}
+
+
+
+
+
 /* ================================
    NAVBAR BASE STYLES
    ================================ */
@@ -19,8 +67,18 @@
   font-weight: 500;
   margin: 0 12px;
   position: relative;
-  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  padding: 14px 12px;
   transition: color 0.3s ease;
+  height: 100%;
+}
+.music-icon {
+  width: 70px;
+  height: auto;
+  cursor: pointer;
+  filter: brightness(0) invert(1);
+  fill: white;
 }
 
 /* ================================
@@ -29,28 +87,42 @@
 .nav-link::after {
   content: "";
   position: absolute;
-  width: 0%;
-  height: 2px;
   bottom: 0;
   left: 0;
+  width: 100%;
+  height: 2px;
   background-color: #ffcc00;
-  transition: width 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
 }
 
 .nav-link:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* ================================
    ACTIVE PAGE STYLES
    ================================ */
-.nav-link.active::after {
-  width: 100%;
-  background-color: #ffcc00;
-}
 
 .nav-link.active {
   color: #ffcc00 !important;
+}
+
+.nav-link.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #ffcc00;
+  z-index: 10;
+}
+
+.nav-item {
+  position: relative;
+  overflow: visible;
 }
 
 /* ================================
@@ -65,6 +137,38 @@
    HOME BACKGROUND
    ================================ */
 #home {
-  background: url('img/bghome.png') no-repeat center center;
-  background-size: cover;
+  background: url('../img/bghome.png') no-repeat center center;
+  background-size: 100% 100%; /* Stretches both width and height */
+  height: 120vh;
 }
+
+#home h1 {
+  font-family: 'Miss Fajardose', 'Pirata One', cursive !important;
+  font-size: 10rem;
+  font-weight: normal;
+  margin: 0.5em 0;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+  letter-spacing: 4px;
+  color: #fdca00;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 10px #ffd580,
+    0 0 18px rgba(255,215,130,0.7);
+}
+
+
+
+#home p.lead {
+  font-family: 'Eagle Lake', cursive;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #f0f8ff;
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.5),
+    0 0 12px rgba(180,220,255,0.4);
+}
+#home p.lead:last-child {
+  margin-top: 1rem;
+}
+
+
