@@ -1,80 +1,108 @@
 /* ================================
-   NAVBAR INCLUDE + ACTIVE LINK
+   SPA NAVIGATION + MUSIC PLAYER
    ================================ */
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ✅ Load head and navbar dynamically
+  fetch('head.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('head-placeholder').innerHTML = html;
+    });
+
   fetch('nav.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('navbar-placeholder').innerHTML = html;
+      initMusicPlayer();   // ✅ Call after nav loads so the button exists
+      initNavLinks();
+    });
 
-      fetch('head.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('head-placeholder').innerHTML = html;
-        });
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    });
 
-      // ✅ Highlight active link
-      let current = window.location.pathname.split("/").pop();
-      if (!current || current === "/") current = "index.html";
-      current = current.split("?")[0].split("#")[0];
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.getAttribute('href') === current) {
-          link.classList.add('active');
-        }
+
+  // ✅ Load default page content (home)
+  loadPage('pages/home.html');
+
+  /* ================================
+     Function to dynamically load pages
+     ================================ */
+  function loadPage(url) {
+    fetch(url)
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('content').innerHTML = html;
+
+        // Update URL without reloading page
+        const cleanUrl = url.replace('pages/', '');
+        window.history.pushState({}, '', cleanUrl);
       });
+  }
 
-      // ✅ Playlist
-      const playlist = [
-        'music/myScene.mp3',
-        // 'music/song2.mp3',
-        // 'music/song3.mp3'
-      ];
+  /* ================================
+     Init Navigation Links
+     ================================ */
+  function initNavLinks() {
+    document.querySelectorAll('.nav-link, .navbar-brand').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
 
-      // ✅ Audio setup
-      let audio = new Audio();
-      audio.loop = false; // we want next song after end
-      let isPlaying = false;
+        // ✅ Remove active class from all nav links
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
 
-      function playRandomSong() {
-        const index = Math.floor(Math.random() * playlist.length);
-        audio.src = playlist[index];
+        // ✅ Add active class to the clicked link
+        if (link.classList.contains('nav-link')) {
+          link.classList.add('active');
+        } else {
+          // if it's the logo, set Home as active
+          const homeLink = document.querySelector('.nav-link[href="home.html"]');
+          if (homeLink) homeLink.classList.add('active');
+        }
+
+        loadPage(`pages/${href}`);
+      });
+    });
+  }
+
+  /* ================================
+     Init Music Player
+     ================================ */
+  function initMusicPlayer() {
+    const playlist = ['music/myScene.mp3'];  // ✅ add more songs if needed
+    const audio = document.getElementById('bg-music');
+    let isPlaying = false;
+
+    const musicBtn = document.getElementById('music-btn'); // get after nav loads
+    if (!musicBtn) return; // no button found, exit
+
+    musicBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        if (!audio.src) {
+          audio.src = playlist[0]; // set song if it's empty
+        }
         audio.play();
-      }
-
-      // ✅ When one song ends, pick another
-      audio.addEventListener('ended', playRandomSong);
-
-      // ✅ Music button
-      const musicBtn = document.getElementById('music-btn');
-      if (musicBtn) {
-        musicBtn.addEventListener('click', () => {
-          if (!isPlaying) {
-            playRandomSong(); // start playing
-            isPlaying = true;
-            musicBtn.src = 'img/music-on.png';
-          } else {
-            audio.pause();
-            audio.currentTime = 0;
-            isPlaying = false;
-            musicBtn.src = 'img/music-off.png';
-          }
-        });
+        isPlaying = true;
+        musicBtn.src = 'img/music-on.png';
+      } else {
+        audio.pause();
+        isPlaying = false;
+        musicBtn.src = 'img/music-off.png';
       }
     });
-});
-
-
-
-/* ================================
-   NAVBAR SCROLL BACKGROUND
-   ================================ */
-window.addEventListener('scroll', () => {
-  const navbar = document.querySelector('.custom-navbar');
-  if (navbar) {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
   }
+
+  /* ================================
+     Handle Back/Forward Browser Buttons
+     ================================ */
+  window.addEventListener('popstate', () => {
+    let path = window.location.pathname.replace('/', '');
+    if (!path || path === 'index.html') path = 'home.html';
+    loadPage(`pages/${path}`);
+  });
+
 });

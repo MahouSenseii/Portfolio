@@ -139,14 +139,21 @@
 #home {
   background: url('../img/bghome.png') no-repeat center center;
   background-size: 100% 100%; /* Stretches both width and height */
-  height: 120vh;
+  height: 180vh;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
+
+#home div {
+  margin-top: -70vh;
+}
+
 
 #home h1 {
   font-family: 'Miss Fajardose', 'Pirata One', cursive !important;
-  font-size: 10rem;
+  font-size: 12vw;
   font-weight: normal;
-  margin: 0.5em 0;
+  margin: 0.1em 0;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
   letter-spacing: 4px;
   color: #fdca00;
@@ -160,15 +167,111 @@
 
 #home p.lead {
   font-family: 'Eagle Lake', cursive;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  font-size: 2vw;
+  margin-bottom: .2rem;
   color: #f0f8ff;
   text-shadow:
     0 0 6px rgba(255,255,255,0.5),
     0 0 12px rgba(180,220,255,0.4);
 }
 #home p.lead:last-child {
-  margin-top: 1rem;
+  margin-top: .2rem;
+}
+
+/* ================================
+   PROECTS
+   ================================ */
+#projects{
+  background: url('../img/bgprojects.png') no-repeat center center;
+  background-size: 100% 100%; /* Stretches both width and height */
+  height: 160vh;
+}
+
+/* ================================
+   ART
+   ================================ */
+#art{
+  background: url('../img/bgart.png') no-repeat center center;
+  background-size: 100% 100%; /* Stretches both width and height */
+  height: 160vh;
+}
+
+/* ================================
+   ABOUT
+   ================================ */
+#about{
+  background: url('../img/bgaboutme.png') no-repeat center center;
+  background-size: 100% 100%; /* Stretches both width and height */
+  height: 160vh;
+}
+
+/* ================================
+   KNOWLEDGE
+   ================================ */
+#knowledge{
+  background: url('../img/bgknowledge.png') no-repeat center center;
+  background-size: 100% 100%; /* Stretches both width and height */
+  height: 160vh;
 }
 
 
+/* ================================
+   CONTACT
+   ================================ */
+#contact{
+  background: url('../img/bgcontactme.png') no-repeat center center;
+  background-size: 100% 100%; /* Stretches both width and height */
+  height: 160vh;
+}
+
+
+/* ================================
+   FOOTER
+   ================================ */
+.footer-placeholder{
+  top: 0;
+}
+.footer {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin-top: 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+  margin-top: 0;
+  font-size: 1.8vw; /* scales with viewport width */
+}
+
+.footer-content p {
+  margin: 5px 0;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons img {
+  width: 50px;
+  height: 50px;
+  margin: 0 8px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* match your footer or content background */
+}
