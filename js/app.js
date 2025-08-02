@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('footer-placeholder').innerHTML = html;
     });
 
-
   // ✅ Load default page content (home)
   loadPage('pages/home.html');
 
@@ -36,6 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(res => res.text())
       .then(html => {
         document.getElementById('content').innerHTML = html;
+
+        // ✅ Initialize gallery if art page is loaded
+        if (url.includes('art.html')) {
+          initArtGallery();
+        }
 
         // Update URL without reloading page
         const cleanUrl = url.replace('pages/', '');
@@ -93,6 +97,50 @@ document.addEventListener('DOMContentLoaded', () => {
         isPlaying = false;
         musicBtn.src = 'img/music-off.png';
       }
+    });
+  }
+
+  /* ================================
+     ART GALLERY
+     ================================ */
+  function initArtGallery() {
+    const gallery = document.getElementById('art-gallery');
+    if (!gallery) return; // not on art page
+
+    const images = [
+      { src: 'img/beach.jpg', title: 'Artwork 1' },
+      { src: 'img/art2.jpg', title: 'Artwork 2' },
+      { src: 'img/art3.jpg', title: 'Artwork 3' },
+      { src: 'img/art4.jpg', title: 'Artwork 4' },
+    ];
+
+    gallery.innerHTML = ''; // clear before adding
+    images.forEach(img => {
+      const div = document.createElement('div');
+      div.classList.add('art-card');
+      div.innerHTML = `<img src="${img.src}" alt="${img.title}">`;
+      gallery.appendChild(div);
+
+      div.addEventListener('click', () => openLightbox(img.src, img.title));
+    });
+  }
+
+  /* ================================
+     LIGHTBOX
+     ================================ */
+  function openLightbox(src, title) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <div class="lightbox-content">
+        <img src="${src}" alt="${title}">
+        <span class="close">&times;</span>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    lightbox.querySelector('.close').addEventListener('click', () => {
+      lightbox.remove();
     });
   }
 
