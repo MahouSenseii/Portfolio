@@ -1,6 +1,8 @@
 /* ================================
    SPA NAVIGATION + MUSIC PLAYER
    ================================ */
+const pageCache = {}; // ✅ Global cache for preloaded pages
+
 document.addEventListener('DOMContentLoaded', () => {
 
   //  Load head dynamically
@@ -10,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('head-placeholder').innerHTML = html;
     });
 
-//  Load navbar dynamically
+  //  Load navbar dynamically
   fetch('nav.html')
     .then(res => res.text())
     .then(html => {
@@ -29,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-
   //  Load footer dynamically
   fetch('footer.html')
     .then(res => res.text())
@@ -44,39 +45,52 @@ document.addEventListener('DOMContentLoaded', () => {
      Function to dynamically load pages
      ================================ */
   function loadPage(url) {
+    console.log("✅ Loaded page:", url);
+
+    // ✅ Use cache if available
+    if (pageCache[url]) {
+      document.getElementById('content').innerHTML = pageCache[url];
+      afterPageLoad(url);
+      return;
+    }
+
     fetch(url)
       .then(res => res.text())
       .then(html => {
+        pageCache[url] = html; // cache the page
         document.getElementById('content').innerHTML = html;
-
-        //  Always scroll to top when new page loads
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-
-        //  Initialize gallery if art page is loaded
-        if (url.includes('art')) {
-          initArtGallery();
-        }
-
-        // Initialize knowledge bars if knowledge page is loaded
-        if (url.includes('knowledge')) {
-          initKnowledgeBars();
-        }
-
-        // Initialize project slider if projects page is loaded
-        if (url.includes('projects')) {   // <-- make sure it's plural to match "projects.html"
-          initProjectSlider();
-        }
-
-        //  Update URL without reloading page
-        const cleanUrl = url.replace('pages/', '');
-        window.history.pushState({}, '', cleanUrl);
+        afterPageLoad(url);
       });
   }
 
-//  Navbar opacity on scroll
+  function afterPageLoad(url) {
+    //  Always scroll to top when new page loads
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    //  Initialize gallery if art page is loaded
+    if (url.includes('art')) {
+      initArtGallery();
+    }
+
+    // Initialize knowledge bars if knowledge page is loaded
+    if (url.includes('knowledge')) {
+      initKnowledgeBars();
+    }
+
+    // Initialize project slider if projects page is loaded
+    if (url.includes('projects')) {
+      initProjectSlider();
+    }
+
+    //  Update URL without reloading page
+    const cleanUrl = url.replace('pages/', '');
+    window.history.pushState({}, '', cleanUrl);
+  }
+
+  //  Navbar opacity on scroll
   window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.custom-navbar');
     if (window.scrollY > 50) {
@@ -102,12 +116,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (link.classList.contains('nav-link')) {
           link.classList.add('active');
         } else {
-          // if it's the logo, set Home as active
           const homeLink = document.querySelector('.nav-link[href="home.html"]');
           if (homeLink) homeLink.classList.add('active');
         }
 
         loadPage(`pages/${href}`);
+      });
+    });
+
+    // ✅ Preload pages on hover
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const href = `pages/${link.getAttribute('href')}`;
+      link.addEventListener('mouseenter', () => {
+        if (!pageCache[href]) {
+          fetch(href)
+            .then(res => res.text())
+            .then(html => {
+              pageCache[href] = html;
+              console.log(`⚡ Preloaded: ${href}`);
+            });
+        }
       });
     });
   }
@@ -148,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const images = [
       { src: 'img/beach.jpg', title: 'Artwork 1' },
-      // Add more images as needed
     ];
 
     gallery.innerHTML = '';
@@ -171,18 +198,23 @@ document.addEventListener('DOMContentLoaded', () => {
         name: "Project Hunter",
         media: '<img src="img/project1.jpg" alt="Project Hunter">',
         timeframe: "Jan 2023 - Mar 2023",
+        engine: " Pixi.js",
         description: "A survival horror game built in Unreal Engine 5 with custom AI systems."
       },
       {
-        name: "Portfolio Website",
-        media: '<iframe src="https://www.youtube.com/embed/yourVideoID" frameborder="0" allowfullscreen></iframe>',
-        timeframe: "Aug 2024 - Oct 2024",
-        description: "Responsive SPA portfolio site with dynamic content and custom animations."
+        name: "First Five",
+        media: '<iframe src="https://pixidev.azurewebsites.net/VisualNovel/FirstFive" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>',
+        timeframe: " Jan 2017 - Nov 2017",
+        engine: " Pixi.js",
+        description: "First Five, a passion project that showcases the fundamentals of a dating sim game. Developed from scratch, this game allows players" +
+        " to dive into various levels, while interacting with the main heroine, Karen. As the developer, " +
+          "I designed and developed every aspect of this game to showcase the immersive experience that players engage in while playing a dating sim game."
       },
       {
         name: "3D Art Showcase",
         media: '<img src="img/project2.jpg" alt="3D Art Showcase">',
-        timeframe: "Nov 2024 - Dec 2024",
+        timeframe: "Jan 2017 - 2024",
+        engine: " Pixi.js",
         description: "A gallery of 3D models and textures created in Blender and Substance Painter."
       }
     ];
@@ -192,14 +224,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const nameEl = document.querySelector('.project-name');
     const mediaEl = document.querySelector('.project-media');
     const timeEl = document.querySelector('.project-timeframe');
+    const engineEl = document.querySelector('.project-engine');
     const descEl = document.querySelector('.project-description');
 
     function renderProject(index) {
       const project = projects[index];
       nameEl.textContent = project.name;
       mediaEl.innerHTML = project.media;
+
+      // ✅ If it's an iframe, add a fullscreen button
+      const iframe = mediaEl.querySelector('iframe');
+      if (iframe) {
+        const btn = document.createElement('button');
+        btn.textContent = "Fullscreen";
+        btn.classList.add('fullscreen-btn');
+        mediaEl.appendChild(btn);
+
+        btn.addEventListener('click', () => {
+          if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+          } else if (iframe.webkitRequestFullscreen) {
+            iframe.webkitRequestFullscreen();
+          } else if (iframe.mozRequestFullScreen) {
+            iframe.mozRequestFullScreen();
+          }
+        });
+      }
+
+      engineEl.textContent = `Engine: ${project.engine}`;
       timeEl.textContent = `Timeframe: ${project.timeframe}`;
       descEl.textContent = project.description;
+
     }
 
     document.querySelector('.prev-btn').addEventListener('click', () => {
@@ -212,20 +267,18 @@ document.addEventListener('DOMContentLoaded', () => {
       renderProject(currentIndex);
     });
 
-    // Init first project
     renderProject(currentIndex);
   }
-
 
   /* ================================
      KNOWLEDGE PROGRESS BARS
      ================================ */
   function initKnowledgeBars() {
+    console.log("✅ initKnowledgeBars triggered");
     const container = document.getElementById('knowledge-list');
     if (!container) return;
 
     const skills = [
-      // 🎨 Artist Skills
       { category: 'Digital Art', name: 'Concept Art', percent: 85 },
       { category: 'Digital Art', name: 'Character Design', percent: 80 },
       { category: 'Digital Art', name: 'Environment Design', percent: 75 },
@@ -233,8 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
       { category: '3D Modeling', name: 'Blender', percent: 70 },
       { category: 'Graphic Design', name: 'Photoshop', percent: 85 },
       { category: 'UI/UX Design', name: 'Interface Design', percent: 78 },
-
-      // 💻 Developer Skills
       { category: 'Programming Languages', name: 'C++', percent: 65 },
       { category: 'Programming Languages', name: 'JavaScript', percent: 75 },
       { category: 'Programming Languages', name: 'Python', percent: 60 },
@@ -246,7 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
       { category: 'Optimization & Performance', name: 'Game Profiling', percent: 75 }
     ];
 
-    // Group by category
     const grouped = {};
     skills.forEach(skill => {
       if (!grouped[skill.category]) grouped[skill.category] = [];
@@ -255,7 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.innerHTML = '';
 
-    //  Render categories
     Object.keys(grouped).forEach(category => {
       const section = document.createElement('div');
       section.classList.add('knowledge-category');
@@ -278,23 +327,14 @@ document.addEventListener('DOMContentLoaded', () => {
         section.appendChild(item);
 
         const bar = item.querySelector('.progress-bar');
-
-        //  Force 0% first
         bar.style.width = '0%';
-
-        //  Force reflow to guarantee CSS transition
         void bar.offsetWidth;
-
-        //  Delay animation so grid layout finishes first
         setTimeout(() => {
           bar.style.width = skill.percent + '%';
         }, 300);
       });
     });
   }
-
-
-
 
   /* ================================
      LIGHTBOX
