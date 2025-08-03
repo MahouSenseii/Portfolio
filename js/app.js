@@ -3,14 +3,14 @@
    ================================ */
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ✅ Load head dynamically
+  //  Load head dynamically
   fetch('head.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('head-placeholder').innerHTML = html;
     });
 
-// ✅ Load navbar dynamically and re-init Bootstrap collapse
+//  Load navbar dynamically
   fetch('nav.html')
     .then(res => res.text())
     .then(html => {
@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
       initMusicPlayer();
       initNavLinks();
 
-      // ✅ Only run if Bootstrap JS is available
       if (typeof bootstrap !== 'undefined') {
         document.querySelectorAll('.collapse').forEach(el => {
           new bootstrap.Collapse(el, { toggle: false });
@@ -31,14 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-  // ✅ Load footer dynamically
+  //  Load footer dynamically
   fetch('footer.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('footer-placeholder').innerHTML = html;
     });
 
-  // ✅ Load default page content (home)
+  //  Load default page content (home)
   loadPage('pages/home.html');
 
   /* ================================
@@ -50,34 +49,34 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(html => {
         document.getElementById('content').innerHTML = html;
 
-        // ✅ Always scroll to top when new page loads
+        //  Always scroll to top when new page loads
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
 
-        // ✅ Initialize gallery if art page is loaded
+        //  Initialize gallery if art page is loaded
         if (url.includes('art')) {
           initArtGallery();
         }
 
-        // ✅ Initialize knowledge bars if knowledge page is loaded
+        // Initialize knowledge bars if knowledge page is loaded
         if (url.includes('knowledge')) {
           initKnowledgeBars();
         }
 
-        // ✅ Initialize project slider if projects page is loaded
+        // Initialize project slider if projects page is loaded
         if (url.includes('projects')) {   // <-- make sure it's plural to match "projects.html"
           initProjectSlider();
         }
 
-        // ✅ Update URL without reloading page
+        //  Update URL without reloading page
         const cleanUrl = url.replace('pages/', '');
         window.history.pushState({}, '', cleanUrl);
       });
   }
 
-// ✅ Navbar opacity on scroll
+//  Navbar opacity on scroll
   window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.custom-navbar');
     if (window.scrollY > 50) {
@@ -96,10 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const href = link.getAttribute('href');
 
-        // ✅ Remove active class from all nav links
+        //  Remove active class from all nav links
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
 
-        // ✅ Add active class to the clicked link
+        //  Add active class to the clicked link
         if (link.classList.contains('nav-link')) {
           link.classList.add('active');
         } else {
@@ -247,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { category: 'Optimization & Performance', name: 'Game Profiling', percent: 75 }
     ];
 
-    // ✅ Group by category
+    // Group by category
     const grouped = {};
     skills.forEach(skill => {
       if (!grouped[skill.category]) grouped[skill.category] = [];
@@ -256,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.innerHTML = '';
 
-    // ✅ Render categories
+    //  Render categories
     Object.keys(grouped).forEach(category => {
       const section = document.createElement('div');
       section.classList.add('knowledge-category');
@@ -280,13 +279,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const bar = item.querySelector('.progress-bar');
 
-        // ✅ Force 0% first
+        //  Force 0% first
         bar.style.width = '0%';
 
-        // ✅ Force reflow to guarantee CSS transition
+        //  Force reflow to guarantee CSS transition
         void bar.offsetWidth;
 
-        // ✅ Delay animation so grid layout finishes first
+        //  Delay animation so grid layout finishes first
         setTimeout(() => {
           bar.style.width = skill.percent + '%';
         }, 300);

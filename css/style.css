@@ -195,7 +195,7 @@
    ================================ */
 #home {
   background: url('../img/bghome.png') no-repeat center center;
-  background-size: 100% 100%; /* Stretches both width and height */
+  background-size: 100% 100%;
   height: 180vh;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -223,7 +223,19 @@
     0 0 18px rgba(255,215,130,0.7);
 }
 
-
+.dot{
+  font-family: 'Eagle Lake', cursive;
+  font-size: 2vw;
+  margin-bottom: .2rem;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+  text-decoration-color: #ffcc00;
+  text-decoration-thickness: 2px;
+  color: #fdca00;
+  text-shadow:
+    0 0 15px #fff,
+    0 0 1px #ffd580,
+    0 0 18px rgba(255,215,130,0.7);
+}
 
 #home p.lead {
   font-family: 'Eagle Lake', cursive;
@@ -244,7 +256,7 @@
 #projects{
   background: url('../img/bgprojects.png') no-repeat center center;
   background-size: 100% 100%;
-  height: 160vh;
+  height: 140vh;
 }
 
 .projects-container {
@@ -253,6 +265,24 @@
   color: #fff;
   padding: 20px;
   text-align: center;
+}
+
+.projects-title{
+  padding-top: 10vh;
+  font-family: 'Miss Fajardose', 'Pirata One', cursive !important;
+  font-size: 5vw;
+  font-weight: normal;
+  margin: 0.1em 0;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+  letter-spacing: 4px;
+  text-decoration: underline;
+  text-decoration-color: #ffcc00;
+  text-decoration-thickness: 2px;
+  color: #fdca00;
+  text-shadow:
+    0 0 15px #fff,
+    0 0 1px #ffd580,
+    0 0 18px rgba(255,215,130,0.7);
 }
 
 .project-slider {
@@ -268,14 +298,21 @@
   padding: 20px;
   border-radius: 10px;
   width: 100%;
-  min-height: 900px;
+  min-height: 40vh;
   transition: opacity 0.5s ease;
 }
 
 .project-name {
   font-size: 1.8rem;
-  color: #ffcc00;
   margin-bottom: 10px;
+  text-decoration: underline;
+  text-decoration-color: #ffcc00;
+  text-decoration-thickness: 2px;
+  color: #fdca00;
+  text-shadow:
+    0 0 15px #fff,
+    0 0 1px #ffd580,
+    0 0 18px rgba(255,215,130,0.7);
 }
 
 .project-media img, .project-media iframe {
@@ -322,15 +359,32 @@
 #art{
   background: url('../img/bgart.png') no-repeat center center;
   background-size: 100% 100%;
-  height: 160vh;
+  height: 200vh;
 }
 
+
+#art h1 {
+  font-family: 'Miss Fajardose', 'Pirata One', cursive !important;
+  font-size: 5vw;
+  font-weight: normal;
+  margin: 0.1em 0;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+  letter-spacing: 4px;
+  text-decoration: underline;
+  text-decoration-color: #ffcc00;
+  text-decoration-thickness: 2px;
+  color: #fdca00;
+  text-shadow:
+    0 0 15px #fff,
+    0 0 1px #ffd580,
+    0 0 18px rgba(255,215,130,0.7);
+}
 
 .art-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 15px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .art-card {
@@ -382,9 +436,9 @@
    ================================ */
 #about{
   background: url('../img/bgaboutme.png') no-repeat center center;
-  background-size: cover;             /* Scales image proportionally */
-  min-height: 100vh;                  /* At least full screen height */
-  height: auto;                       /* Grows with content */
+  background-size: cover;
+  min-height: 100vh;
+  height: auto;
   padding: 50px 0;
 }
 #about div {
@@ -407,14 +461,17 @@
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
   letter-spacing: 4px;
   color: #fdca00;
+  text-decoration: underline;
+  text-decoration-color: #ffcc00;
+  text-decoration-thickness: 2px;
   text-shadow:
-    0 0 4px #fff,
-    0 0 10px #ffd580,
+    0 0 15px #fff,
+    0 0 1px #ffd580,
     0 0 18px rgba(255,215,130,0.7);
 }
 
 .about-text p {
-  font-size: 2rem;
+  font-size: 3vh;
   line-height: 1.6;
   margin-bottom: 30px;
   color: #ffffff;
@@ -428,10 +485,28 @@
    ================================ */
 #knowledge {
   background: url('../img/bgknowledge.png') no-repeat center center;
-  background-size: cover;             /* Scales image proportionally */
-  min-height: 100vh;                  /* At least full screen height */
-  height: auto;                       /* Grows with content */
-  padding: 50px 0;                    /* Space above/below content */
+  background-size: cover;
+  min-height: 100vh;
+  height: auto;
+  padding: 50px 0;
+}
+
+#knowledge h1{
+  padding-top: 10vh;
+  font-size: 12vh;
+  margin-bottom: 10px;
+  font-family: 'Miss Fajardose', 'Pirata One', cursive !important;
+  font-weight: normal;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+  letter-spacing: 4px;
+  color: #fdca00;
+  text-decoration: underline;
+  text-decoration-color: #ffcc00;
+  text-decoration-thickness: 2px;
+  text-shadow:
+    0 0 15px #fff,
+    0 0 1px #ffd580,
+    0 0 18px rgba(255,215,130,0.7);
 }
 
 /* ================================
