@@ -268,9 +268,8 @@
 }
 
 .projects-title{
-  padding-top: 10vh;
   font-family: 'Miss Fajardose', 'Pirata One', cursive !important;
-  font-size: 5vw;
+  font-size: 12vw;
   font-weight: normal;
   margin: 0.1em 0;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
@@ -365,7 +364,7 @@
 
 #art h1 {
   font-family: 'Miss Fajardose', 'Pirata One', cursive !important;
-  font-size: 5vw;
+  font-size: 15vw;
   font-weight: normal;
   margin: 0.1em 0;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
