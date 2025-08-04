@@ -1,5 +1,5 @@
 /* ================================
-   SPA NAVIGATION + MUSIC PLAYER
+   SPA NAVIGATION + MUSIC PLAYER (Hash Routing + Mini Player)
    ================================ */
 const pageCache = {}; // ✅ Global cache for preloaded pages
 
@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.collapse').forEach(el => {
           new bootstrap.Collapse(el, { toggle: false });
         });
-      } else {
-        console.warn('⚠️ Bootstrap not loaded yet, skipping collapse init');
       }
     });
 
@@ -38,56 +36,63 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('footer-placeholder').innerHTML = html;
     });
 
-  //  Load default page content (home)
-  loadPage('pages/home.html');
+  //  Load initial page based on hash or default to home
+  const initialPage = window.location.hash ? window.location.hash.replace('#', '') : 'home.html';
+  loadPage(`pages/${initialPage}`, false);
 
   /* ================================
      Function to dynamically load pages
      ================================ */
-  function loadPage(url) {
+  function loadPage(url, updateHash = true) {
     console.log("✅ Loaded page:", url);
 
-    // ✅ Use cache if available
     if (pageCache[url]) {
       document.getElementById('content').innerHTML = pageCache[url];
-      afterPageLoad(url);
+      afterPageLoad(url, updateHash);
       return;
     }
 
     fetch(url)
       .then(res => res.text())
       .then(html => {
-        pageCache[url] = html; // cache the page
+        pageCache[url] = html;
         document.getElementById('content').innerHTML = html;
-        afterPageLoad(url);
+        afterPageLoad(url, updateHash);
       });
   }
 
-  function afterPageLoad(url) {
-    //  Always scroll to top when new page loads
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+  function afterPageLoad(url, updateHash) {
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    //  Initialize gallery if art page is loaded
-    if (url.includes('art')) {
-      initArtGallery();
-    }
+    // Initialize page-specific features
+    if (url.includes('art')) initArtGallery();
+    if (url.includes('knowledge')) initKnowledgeBars();
+    if (url.includes('projects')) initProjectSlider();
 
-    // Initialize knowledge bars if knowledge page is loaded
-    if (url.includes('knowledge')) {
-      initKnowledgeBars();
-    }
-
-    // Initialize project slider if projects page is loaded
-    if (url.includes('projects')) {
-      initProjectSlider();
-    }
-
-    //  Update URL without reloading page
     const cleanUrl = url.replace('pages/', '');
-    window.history.pushState({}, '', cleanUrl);
+
+    // ✅ Update hash instead of using pushState
+    if (updateHash) {
+      window.location.hash = cleanUrl;
+    }
+
+    // ✅ Update active navbar link
+    updateActiveNav(cleanUrl);
+  }
+
+  /* ================================
+     Update Active Navbar Link
+     ================================ */
+  function updateActiveNav(page) {
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === page) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
   }
 
   //  Navbar opacity on scroll
@@ -109,10 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const href = link.getAttribute('href');
 
-        //  Remove active class from all nav links
+        // Remove active class from all nav links
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
 
-        //  Add active class to the clicked link
+        // Add active class to clicked link
         if (link.classList.contains('nav-link')) {
           link.classList.add('active');
         } else {
@@ -141,31 +146,95 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ================================
-     Init Music Player
+     Handle Back/Forward Browser Buttons
+     ================================ */
+  window.addEventListener('hashchange', () => {
+    const page = window.location.hash ? window.location.hash.replace('#', '') : 'home.html';
+    loadPage(`pages/${page}`, false);
+    updateActiveNav(page); // ✅ keeps navbar in sync
+  });
+
+  /* ================================
+     Init Music Player (with mini player)
      ================================ */
   function initMusicPlayer() {
-    const playlist = ['music/myScene.mp3'];
+    const playlist = [
+      { src: 'music/myScene.mp3', name: 'My Scene' },
+      { src: 'music/secondTrack.mp3', name: 'Second Track' }
+      // ✅ Add more songs here
+    ];
+    let currentIndex = 0;
+
     const audio = document.getElementById('bg-music');
     let isPlaying = false;
 
     const musicBtn = document.getElementById('music-btn');
-    if (!musicBtn) return;
+    const miniPlayer = document.getElementById('mini-music-player');
+    const songTitle = document.getElementById('song-title');
+    const currentTimeEl = document.getElementById('current-time');
+    const totalTimeEl = document.getElementById('total-time');
+    const progressBar = document.getElementById('progress-bar');
+    const prevBtn = document.getElementById('prev-song');
+    const nextBtn = document.getElementById('next-song');
+    const togglePlayBtn = document.getElementById('toggle-play');
 
-    musicBtn.addEventListener('click', () => {
-      if (!isPlaying) {
-        if (!audio.src) {
-          audio.src = playlist[0];
-        }
-        audio.play();
-        isPlaying = true;
-        musicBtn.src = 'img/music-on.png';
-      } else {
-        audio.pause();
-        isPlaying = false;
-        musicBtn.src = 'img/music-off.png';
-      }
+    function loadSong(index) {
+      audio.src = playlist[index].src;
+      songTitle.textContent = playlist[index].name;
+    }
+
+    function playMusic() {
+      if (!audio.src) loadSong(currentIndex);
+      audio.play();
+      isPlaying = true;
+      musicBtn.src = 'img/music-on.png';
+      miniPlayer.style.display = 'flex'; // ✅ Show mini player
+    }
+
+    function pauseMusic() {
+      audio.pause();
+      isPlaying = false;
+      musicBtn.src = 'img/music-off.png';
+      miniPlayer.style.display = 'none'; // ✅ Hide when music is off
+    }
+
+    function updateProgress() {
+      const current = audio.currentTime;
+      const duration = audio.duration || 0;
+      progressBar.value = (current / duration) * 100 || 0;
+      currentTimeEl.textContent = formatTime(current);
+      totalTimeEl.textContent = formatTime(duration);
+    }
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60) || 0;
+      const s = Math.floor(sec % 60) || 0;
+      return `${m}:${s.toString().padStart(2, '0')}`;
+    }
+
+    musicBtn.addEventListener('click', () => isPlaying ? pauseMusic() : playMusic());
+    togglePlayBtn.addEventListener('click', () => isPlaying ? pauseMusic() : playMusic());
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % playlist.length;
+      loadSong(currentIndex);
+      if (isPlaying) audio.play();
     });
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+      loadSong(currentIndex);
+      if (isPlaying) audio.play();
+    });
+
+    progressBar.addEventListener('input', () => {
+      audio.currentTime = (progressBar.value / 100) * audio.duration;
+    });
+
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('loadedmetadata', updateProgress);
   }
+
 
   /* ================================
      ART GALLERY
@@ -207,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timeframe: " Jan 2017 - Nov 2017",
         engine: " Pixi.js",
         description: "First Five, a passion project that showcases the fundamentals of a dating sim game. Developed from scratch, this game allows players" +
-        " to dive into various levels, while interacting with the main heroine, Karen. As the developer, " +
+          " to dive into various levels, while interacting with the main heroine, Karen. As the developer, " +
           "I designed and developed every aspect of this game to showcase the immersive experience that players engage in while playing a dating sim game."
       },
       {
@@ -254,7 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
       engineEl.textContent = `Engine: ${project.engine}`;
       timeEl.textContent = `Timeframe: ${project.timeframe}`;
       descEl.textContent = project.description;
-
     }
 
     document.querySelector('.prev-btn').addEventListener('click', () => {
@@ -274,7 +342,6 @@ document.addEventListener('DOMContentLoaded', () => {
      KNOWLEDGE PROGRESS BARS
      ================================ */
   function initKnowledgeBars() {
-    console.log("✅ initKnowledgeBars triggered");
     const container = document.getElementById('knowledge-list');
     if (!container) return;
 
@@ -354,14 +421,5 @@ document.addEventListener('DOMContentLoaded', () => {
       lightbox.remove();
     });
   }
-
-  /* ================================
-     Handle Back/Forward Browser Buttons
-     ================================ */
-  window.addEventListener('popstate', () => {
-    let path = window.location.pathname.replace('/', '');
-    if (!path || path === 'index.html') path = 'home.html';
-    loadPage(`pages/${path}`);
-  });
 
 });

@@ -10,6 +10,44 @@
       <img src="img/logo.png" alt="Logo" height="70" width="140">
     </a>
 
+    <!-- Mini Music Player (hidden until music starts) -->
+    <!-- Modern Mini Music Player -->
+    <div id="mini-music-player" class="mini-player" style="display:none;">
+      <div class="song-title-container">
+        <span id="song-title">Song Name</span>
+      </div>
+
+      <div class="progress-container">
+        <span id="current-time">0:00</span>
+        <label for="progress-bar"></label><input type="range" id="progress-bar" value="0" min="0" max="100">
+        <span id="total-time">0:00</span>
+      </div>
+
+      <div class="player-controls">
+        <div class="player-controls">
+          <button id="prev-song">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M18 4v16l-8-8 8-8zM6 4v16h2V4H6z"/>
+            </svg>
+          </button>
+          <button id="toggle-play">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </button>
+          <button id="next-song">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M6 4v16l8-8-8-8zM18 4v16h-2V4h2z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
     <!-- Mobile toggle -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
