@@ -780,16 +780,13 @@ function renderKnowledgeBars(data) {
 function renderContact(data) {
   const contact = data.contact || {};
   const email = contact.email || '';
-  const phone = contact.phone || '';
   const location = contact.location || '';
 
   setText('#contact-availability', contact.availability);
   setText('#contact-email-text', email);
-  setText('#contact-phone-text', phone);
   setText('#contact-location', location);
 
   setHref('#contact-email-link', email ? `mailto:${email}` : '');
-  setHref('#contact-phone-link', phone ? `tel:${phone.replace(/[^\d+]/g, '')}` : '');
 
   setSocialLink('#contact-github', contact.githubUrl);
   setSocialLink('#contact-linkedin', contact.linkedinUrl);
