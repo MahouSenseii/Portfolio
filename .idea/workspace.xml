@@ -5,29 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b19d3e32-c745-474f-ae83-729673aa4446" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/img/projects/FFthumbnail.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/projects/First-FiveFML.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/projects/PH-thumbnail.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/projects/Revia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/projects/ReviaPH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/projects/ReviaTheme.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/projects/WorkingDoc.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/nav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/art.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/art.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/knowledge.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/knowledge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/projects.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/portfolio.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/portfolio.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +111,7 @@
       <workItem from="1776791840102" duration="2743000" />
       <workItem from="1776817621499" duration="13017000" />
       <workItem from="1776835196055" duration="4016000" />
-      <workItem from="1776839964158" duration="5123000" />
+      <workItem from="1776839964158" duration="6515000" />
     </task>
     <servers />
   </component>

@@ -263,22 +263,22 @@
       "sortOrder": 7
     },
     {
-      "title": "Colorist Study 2",
+      "title": "Colorist 1",
       "category": "Environment Art",
       "year": "2024",
       "src": "img/art/colorist-study-2.png",
       "alt": "Blue interior hallway scene with chandelier lighting",
-      "description": "Interior lighting and color composition study.",
+      "description": "Interior lighting and color for short animation.",
       "relatedProject": "",
       "sortOrder": 8
     },
     {
-      "title": "Colorist Study",
+      "title": "Colorist 2",
       "category": "Character Art",
       "year": "2024",
       "src": "img/art/colorist-study.png",
-      "alt": "Green-lit portrait illustration of a person with glasses",
-      "description": "Color and lighting portrait experiment.",
+      "alt": "Green-lit hallway",
+      "description": "Interior lighting and color for short animation.",
       "relatedProject": "",
       "sortOrder": 9
     },
