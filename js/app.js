@@ -547,7 +547,7 @@ function renderProjects(data) {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'gp-media-btn';
-        btn.textContent = embedSrc ? 'Play Project' : 'Watch Video';
+        btn.textContent = embedSrc ? 'Play Demo Project' : 'Watch Video';
         btn.addEventListener('click', () => openMedia(embedSrc || videoSrc, false));
         actionsEl.appendChild(btn);
       }
@@ -890,7 +890,7 @@ function requestFullscreen(element) {
 
 /**
  * Converts a YouTube or Vimeo watch URL into an embeddable iframe src.
- * Returns empty string if the URL is not a recognised video platform.
+ * Returns empty string if the URL is not a recognized video platform.
  */
 function getVideoEmbedUrl(url) {
   if (!url) return '';
