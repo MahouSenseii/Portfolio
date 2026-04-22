@@ -219,6 +219,7 @@ function initMusicPlayer() {
         .then(() => {
           isPlaying = true;
           musicBtn.src = 'img/music-on.png';
+          musicBtn.closest('.nav-audio')?.classList.add('is-playing');
           if (miniPlayer) miniPlayer.hidden = false;
           if (togglePlayBtn) togglePlayBtn.setAttribute('aria-label', 'Pause music');
         })
@@ -229,6 +230,7 @@ function initMusicPlayer() {
       audio.pause();
       isPlaying = false;
       musicBtn.src = 'img/music-off.png';
+      musicBtn.closest('.nav-audio')?.classList.remove('is-playing');
       if (miniPlayer) miniPlayer.hidden = true;
       if (togglePlayBtn) togglePlayBtn.setAttribute('aria-label', 'Play music');
     };
