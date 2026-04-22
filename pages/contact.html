@@ -1,32 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head id="head-placeholder"></head>
-<body>
-
-<!-- Navbar -->
-<div id="navbar-placeholder"></div>
-
-<header id="contact" class="d-flex align-items-center justify-content-center text-center">
+<section id="contact" class="page-section">
   <div class="contact-container">
-    <h1>Contact Me</h1>
-    <p>Have a question or want to work together? Reach out through the info below.</p>
+    <h1 class="section-title">Contact Me</h1>
 
-    <div class="contact-info">
-      <p><strong>Email:</strong> <a href="davisq1991@yahoo.com">davisq1991@yahoo.com</a></p>
-      <p><strong>Phone:</strong> +1 (850) 768-5134</p>
-      <p><strong>Location:</strong> Pensacola, FL</p>
-    </div>
+    <div class="contact-panel">
+      <div class="contact-info">
+        <p id="contact-availability"></p>
 
-    <div class="contact-socials">
-      <h3>Connect With Me</h3>
-      <div class="social-icons">
-        <a href="https://github.com" target="_blank"><img src="img/github.png" alt="GitHub"></a>
-        <a href="https://linkedin.com" target="_blank"><img src="img/linkedin.png" alt="LinkedIn"></a>
+        <div class="contact-methods">
+          <p>
+            <strong>Email:</strong>
+            <a id="contact-email-link" href="#"><span id="contact-email-text"></span></a>
+          </p>
+          <p>
+            <strong>Phone:</strong>
+            <a id="contact-phone-link" href="#"><span id="contact-phone-text"></span></a>
+          </p>
+          <p>
+            <strong>Location:</strong>
+            <span id="contact-location"></span>
+          </p>
+        </div>
+
+        <div class="contact-socials social-icons">
+          <a id="contact-github" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <img src="img/github.png" alt="">
+          </a>
+          <a id="contact-linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="img/linkedin.png" alt="">
+          </a>
+          <a id="contact-discord" href="#" target="_blank" rel="noopener noreferrer" aria-label="Discord" hidden>
+            <img src="img/discord.png" alt="">
+          </a>
+          <a id="contact-itch" href="#" target="_blank" rel="noopener noreferrer" aria-label="Itch.io" hidden>
+            <img src="img/itch.png" alt="">
+          </a>
+        </div>
       </div>
+
+      <form id="contact-form" class="contact-form">
+        <label>
+          Name
+          <input type="text" name="name" autocomplete="name">
+        </label>
+        <label>
+          Reply Email
+          <input type="email" name="email" autocomplete="email">
+        </label>
+        <label>
+          Subject
+          <input type="text" name="subject" value="Portfolio Job Opportunity">
+        </label>
+        <label>
+          Message
+          <textarea name="message" required></textarea>
+        </label>
+        <button class="primary-button" type="submit">Send Email</button>
+      </form>
     </div>
   </div>
-</header>
-<!-- JS -->
-<script src="../js/app.js"></script>
-</body>
-</html>
+</section>

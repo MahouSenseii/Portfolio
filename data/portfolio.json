@@ -1,0 +1,302 @@
+{
+  "profile": {
+    "name": "Quentin F. Davis",
+    "roles": [
+      "Game Developer",
+      "Designer",
+      "Creator",
+      "Programmer"
+    ],
+    "tagline": "Crafting game systems, interactive experiences, and polished user-facing tools.",
+    "about": [
+      "Full-stack software engineer and C++ game programmer with 6+ years building production systems across AI backends, cloud infrastructure, and Unreal Engine. Shipped a local AI assistant with vLLM inference and Redis-backed memory, an Azure-hosted multi-platform sync orchestration service, a cloud-ready FastAPI authorization workflow system, and a modular UE5 action RPG all from architecture through deployment. Rare cross-domain fluency across game engines, backend services, AI pipelines, and cloud infrastructure with a consistent focus on clean, maintainable code."
+    ]
+  },
+  "contact": {
+    "email": "davisq1991@yahoo.com",
+    "phone": "+1 (850) 768-5134",
+    "location": "Pensacola, FL",
+    "availability": "Open to game development, software, and interactive media roles.",
+    "githubUrl": "https://github.com",
+    "linkedinUrl": "https://linkedin.com",
+    "discord": "",
+    "itchUrl": ""
+  },
+  "projects": [
+    {
+      "name": "Project Hunter",
+      "category": "Games",
+      "subtitle": "Action RPG prototype built in Unreal Engine 5",
+      "role": "Gameplay Programmer / Systems Designer",
+      "timeframe": "Jan 2023 - Present",
+      "engine": "Unreal Engine 5",
+      "image": "img/projects/PH-thumbnail.png",
+      "thumbnail": "img/projects/PH-thumbnail.png",
+      "characterImage": "img/projects/project-hunter-character.png",
+      "characterAlt": "Project Hunter blue character render",
+      "imageAlt": "Fantasy forest environment used as Project Hunter showcase art",
+      "summary": "A modular action RPG prototype built in UE5 around survival horror pacing, component-driven character systems, and resource-aware player pressure.",
+      "details": "Built around modular gameplay logic, enemy pressure, and a player experience that rewards careful movement and resource awareness.",
+      "highlights": [
+        "Custom gameplay systems built from ALS ",
+        "Action RPG gameplay",
+        "Prototype-focused iteration",
+        "GAS-integrated stats and combat",
+        "Active architecture refactor"
+      ],
+      "tags": ["Unreal Engine", "C++", "Game Systems", "Action RPG", "Blueprints"],
+      "featured": true,
+      "sortOrder": 1,
+      "galleryImages": [],
+      "videoUrl": "",
+      "links": []
+    },
+    {
+      "name": "First Five",
+      "category": "Interactive Web",
+      "subtitle": "Playable visual novel prototype",
+      "role": "Solo Developer",
+      "timeframe": "Jan 2017 - Nov 2017",
+      "engine": "Pixi.js",
+      "embed": "https://pixidev.azurewebsites.net/VisualNovel/FirstFive",
+      "image": "img/projects/FFthumbnail.png",
+      "thumbnail": "img/projects/FFthumbnail.png",
+      "characterImage": "img/projects/First-FiveFML.png",
+      "imageAlt": "Playable First Five visual novel embedded preview",
+      "summary": "A dating sim / visual novel passion project built from scratch.",
+      "details": "Designed and developed the interaction flow, character conversations, levels, and playable experience around the heroine Karen.",
+      "highlights": [
+        "Playable web experience",
+        "Dialogue-driven design",
+        "Solo design and development"
+      ],
+      "tags": ["Pixi.js", "JavaScript", "Visual Novel", "Interactive Story", "Web"],
+      "featured": true,
+      "sortOrder": 2,
+      "galleryImages": [],
+      "videoUrl": "",
+      "links": [
+        {
+          "label": "Open Project",
+          "url": "https://pixidev.azurewebsites.net/VisualNovel/FirstFive"
+        }
+      ]
+    },
+    {
+  "name": "SyncBridge",
+  "category": "Tools & Apps",
+  "subtitle": "Integration orchestration console for meeting and recording workflows",
+  "role": "Full Stack Engineer / Systems Architect",
+  "timeframe": "2025 - Present",
+  "engine": "PyCharm",
+  "image": "",
+  "thumbnail": "",
+  "characterImage": "",
+  "characterAlt": "",
+  "imageAlt": "",
+  "summary": "An internal admin console and Azure-backed orchestration service that syncs transcripts, action items, and recordings across Fireflies, Coda, Taskade, Descript, and StreamYard.",
+  "details": "Queue-backed sync control plane with a TypeScript/Express backend and React/Vite admin UI. Covers platform setup, destination mapping, webhook readiness, dead-letter recovery, and manual recording uploads — all routed through Azure Table, Queue, and Blob Storage.",
+  "highlights": [
+    "5-platform Azure orchestration",
+    "Queue-backed sync pipeline",
+    "Dead-letter recovery and retry"
+  ],
+  "tags": ["TypeScript", "React", "Node.js", "Azure", "REST API", "Integration", "Internal Ops"],
+  "featured": true,
+  "sortOrder": 2,
+  "galleryImages": [],
+  "videoUrl": "",
+  "links": []
+},
+{
+  "name": "REVIA",
+  "category": "Tools & Apps",
+  "subtitle": "Local AI companion with voice, memory, and live integrations",
+  "role": "AI Systems Engineer / Desktop App Developer",
+  "timeframe": "2024 - Present",
+  "engine": "PyCharm",
+  "image": "img/projects/Revia.png",
+  "thumbnail": "img/projects/Revia.png",
+  "characterImage": "img/projects/ReviaPH.png",
+  "characterAlt": "REVIA character render",
+  "imageAlt": "img/projects/Revia.png",
+  "summary": "A locally-run AI assistant with a PySide6 desktop UI, persistent memory, real-time voice synthesis, and live Discord and Twitch integrations.",
+  "details": "Two-layer architecture: a Python core server handling inference, persona, memory, and integrations — and a PySide6 controller connected over REST and WebSocket. Memory is Redis-first with JSONL fallback. Voice runs locally via Qwen3-TTS with CUDA support. Extras include a YOLOv8 camera service and a demucs/whisper-backed sing mode.",
+  "highlights": [
+    "Local LLM with persistent memory",
+    "Real-time voice synthesis",
+    "Discord and Twitch integrations"
+  ],
+  "tags": ["Python", "PySide6", "AI", "Desktop App", "Local LLM", "vLLM", "Redis", "TTS", "Docker"],
+  "featured": true,
+  "sortOrder": 3,
+  "galleryImages": ["img/projects/Revia.png","img/projects/ReviaTheme.png"],
+  "videoUrl": "",
+  "links": []
+},
+    {
+  "name": "WorkingDoc Automation",
+  "category": "Tools & Apps",
+  "subtitle": "Authorization record management and reconciliation web app",
+  "role": "Full Stack Engineer / Systems Designer",
+  "timeframe": "2025 - Present",
+  "engine": "PyCharm",
+  "image": "img/projects/WorkingDoc.png",
+  "thumbnail": "img/projects/WorkingDoc.png",
+  "characterImage": "",
+  "characterAlt": "",
+  "imageAlt": "img/projects/WorkingDoc.png",
+  "summary": "A FastAPI web app for importing, merging, and reconciling authorization records from Excel and PDF sources into a living master working document.",
+  "details": "Built on FastAPI with Azure App Service, Azure SQL, and Blob Storage. Handles Excel and PDF imports, smart merge logic that preserves prior manual work, fee matching, invoice generation, and a rules engine for configurable business logic. Auth is handled via Microsoft Entra ID.",
+  "highlights": [
+    "Excel and PDF import with smart merge",
+    "Rules-driven fee matching and invoice generation",
+    "Azure-deployed with Entra ID auth"
+  ],
+  "tags": ["Python", "FastAPI", "Azure", "Excel", "PDF", "Business Automation", "REST API"],
+  "featured": true,
+  "sortOrder": 4,
+  "galleryImages": [],
+  "videoUrl": "",
+  "links": []
+}
+
+  ],
+  "skills": [
+    {
+      "category": "Game Engines",
+      "items": [
+        { "name": "Unreal Engine", "percent": 50, "sortOrder": 1 },
+        { "name": "Unity", "percent": 35, "sortOrder": 2 },
+        { "name": "Pixi.js", "percent": 40, "sortOrder": 3 }
+      ]
+    },
+    {
+      "category": "Programming",
+      "items": [
+        { "name": "C++", "percent": 70, "sortOrder": 1 },
+        { "name": "JavaScript", "percent": 50, "sortOrder": 2 },
+        { "name": "Python", "percent": 50, "sortOrder": 3 }
+      ]
+    },
+    {
+      "category": "Web Development",
+      "items": [
+        { "name": "HTML & CSS", "percent": 65, "sortOrder": 1 },
+        { "name": "TypeScript", "percent": 35, "sortOrder": 2 },
+        { "name": "Node.js", "percent": 45, "sortOrder": 3 },
+        { "name": "React", "percent": 40, "sortOrder": 4 }
+      ]
+    },
+    {
+      "category": "Art and Design",
+      "items": [
+        { "name": "Digital Painting", "percent": 25, "sortOrder": 1 },
+        { "name": "Concept Art", "percent": 30, "sortOrder": 2 },
+        { "name": "Character Design", "percent": 45, "sortOrder": 3 },
+        { "name": "Photoshop", "percent": 35, "sortOrder": 4 },
+        { "name": "Blender", "percent": 30, "sortOrder": 5 },
+        { "name": "Clip Studio", "percent": 40, "sortOrder": 6 },
+         { "name": "MediBang", "percent": 35, "sortOrder": 7 }
+      ]
+    },
+    {
+      "category": "Production",
+      "items": [
+        { "name": "Git and GitHub", "percent": 60, "sortOrder": 1 },
+        { "name": "Debugging", "percent": 60, "sortOrder": 2 },
+        { "name": "UI / UX Design", "percent": 54, "sortOrder": 3 },
+        { "name": "Game Profiling", "percent": 50, "sortOrder": 4 }
+      ]
+    }
+  ],
+  "art": [
+    {
+      "title": "Beach",
+      "category": "Digital Art",
+      "year": "2024",
+      "src": "img/beach.jpg",
+      "alt": "Digital beach artwork by Quentin F. Davis",
+      "description": "A digital painting study exploring light, atmosphere, and color harmony in a coastal setting.",
+      "relatedProject": "",
+      "sortOrder": 1
+    },
+    {
+      "title": "Karen poses lineup",
+      "category": "Character Art",
+      "year": "2024",
+      "src": "img/art/vn-character-lineup.png",
+      "alt": "Three expression poses for Karen the female lead of First Five visual novel",
+      "description": "Expression and pose lineup for a visual novel character.",
+      "relatedProject": "First Five",
+      "sortOrder": 2
+    },
+
+    {
+      "title": "Good End Scene",
+      "category": "Visual Novel Scene",
+      "year": "2024",
+      "src": "img/art/good-end-scene.png",
+      "alt": "Visual novel good ending scene for First Five",
+      "description": "Narrative scene illustration for a First Five good ending.",
+      "relatedProject": "First Five",
+      "sortOrder": 4
+    },
+    {
+      "title": "Manga Style Cover",
+      "category": "Character Art",
+      "year": "2024",
+      "src": "img/art/co-low-character.png",
+      "alt": "Dark Horizon cover",
+      "description": "Dark Horizon cover.",
+      "relatedProject": "",
+      "sortOrder": 6
+    },
+    {
+      "title": "Background Illustration ",
+      "category": "Environment Art",
+      "year": "2024",
+      "src": "img/art/illustration-9.jpg",
+      "alt": "Blue and green framed-room illustration",
+      "description": "Atmospheric room and lighting illustration.",
+      "relatedProject": "",
+      "sortOrder": 7
+    },
+    {
+      "title": "Colorist Study 2",
+      "category": "Environment Art",
+      "year": "2024",
+      "src": "img/art/colorist-study-2.png",
+      "alt": "Blue interior hallway scene with chandelier lighting",
+      "description": "Interior lighting and color composition study.",
+      "relatedProject": "",
+      "sortOrder": 8
+    },
+    {
+      "title": "Colorist Study",
+      "category": "Character Art",
+      "year": "2024",
+      "src": "img/art/colorist-study.png",
+      "alt": "Green-lit portrait illustration of a person with glasses",
+      "description": "Color and lighting portrait experiment.",
+      "relatedProject": "",
+      "sortOrder": 9
+    },
+    {
+      "title": "Stylized Portrait",
+      "category": "Character Art",
+      "year": "2024",
+      "src": "img/art/mahou-sensei-portrait.jpg",
+      "alt": "Portrait illustration signed MahouSensei",
+      "description": "Signed character portrait illustration.",
+      "relatedProject": "",
+      "sortOrder": 10
+    }
+  ],
+  "music": [
+    {
+      "name": "My Scene",
+      "src": "music/myScene.mp3"
+    }
+  ]
+}

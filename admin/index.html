@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Portfolio CMS — Admin</title>
+</head>
+<body>
+  <!--
+    Decap CMS Admin Panel
+    ─────────────────────
+    This page loads the Decap CMS editor interface.
+    To sign in, you need a GitHub account with write access to the repo.
+
+    SETUP CHECKLIST (do this once):
+      1. Go to https://github.com/settings/applications/new
+      2. Fill in:
+           Application name : Portfolio CMS
+           Homepage URL     : https://YOUR_USERNAME.github.io/YOUR_REPO_NAME
+           Callback URL     : https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/admin/
+      3. Click "Register application"
+      4. Copy the Client ID shown on the next screen
+      5. Open admin/config.yml and paste it into the `app_id` field
+      6. Also fill in `repo` with your GitHub username and repo name
+      7. Push the changes — the admin panel will then work at /admin/
+
+    LOGGING IN:
+      - Visit https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/admin/
+      - Click "Login with GitHub"
+      - Authorize the app
+      - Start editing!
+
+    WHAT HAPPENS WHEN YOU SAVE:
+      - Decap CMS commits your changes directly to your GitHub repo
+      - GitHub Pages automatically rebuilds in ~30 seconds
+      - The live site updates without you touching any code
+  -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</body>
+</html>

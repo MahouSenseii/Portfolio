@@ -1,13 +1,13 @@
 {
-  "name": " ",
+  "name": "quentin-portfolio",
   "version": "0.0.1",
-  "description": "",
+  "description": "Maintainable responsive portfolio website for Quentin F. Davis.",
   "private": true,
   "keywords": [
     ""
   ],
   "license": "",
-  "author": "",
+  "author": "Quentin F. Davis",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --config webpack.config.dev.js",
