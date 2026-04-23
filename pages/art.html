@@ -1,6 +1,43 @@
-<section id="art" class="page-section">
-  <div class="gallery-container">
-    <h1 class="section-title">Art</h1>
-    <div id="art-gallery" class="art-grid"></div>
+<section id="art" class="page-section art-showcase">
+  <div id="art-bg" class="gp-bg art-bg" aria-hidden="true"></div>
+  <div class="gp-overlay-left art-overlay-left" aria-hidden="true"></div>
+  <div class="gp-overlay-bottom art-overlay-bottom" aria-hidden="true"></div>
+
+  <div class="gp-watermark art-watermark" aria-hidden="true">
+    <span class="gp-watermark-label">Art Showcase</span>
+    <span id="art-watermark-name" class="gp-watermark-name"></span>
+  </div>
+
+  <aside class="gp-sidebar art-sidebar" aria-label="Filter artwork by category">
+    <div id="art-category-nav" class="gp-category-nav art-category-nav" role="list"></div>
+  </aside>
+
+  <div class="gp-content art-content">
+    <p id="art-featured" class="featured-badge" hidden>Featured</p>
+    <h1 id="art-name" class="gp-proj-name art-name"></h1>
+    <p id="art-subtitle" class="gp-subtitle art-subtitle"></p>
+    <div class="gp-name-rule art-name-rule" aria-hidden="true"></div>
+
+    <div class="gp-card art-info-card">
+      <p id="art-category-label" class="gp-card-eyebrow"></p>
+      <p id="art-description" class="gp-card-summary"></p>
+      <div id="art-meta" class="project-meta art-meta"></div>
+      <div id="art-actions" class="gp-media-actions"></div>
+    </div>
+  </div>
+
+  <figure id="art-feature" class="art-feature">
+    <img id="art-feature-img" class="art-feature-img" src="" alt="">
+  </figure>
+
+  <div class="gp-strip-wrap art-strip-wrap">
+    <button class="gp-strip-btn art-strip-prev" type="button" aria-label="Previous artwork">&#10094;</button>
+    <div id="art-strip" class="gp-strip art-strip" role="list" aria-label="All artwork"></div>
+    <button class="gp-strip-btn art-strip-next" type="button" aria-label="Next artwork">&#10095;</button>
+  </div>
+
+  <div id="art-modal" class="gp-media-modal art-modal" hidden role="dialog" aria-modal="true" aria-label="Artwork preview">
+    <button class="gp-modal-close art-modal-close" type="button" aria-label="Close artwork preview">&#10005;</button>
+    <div id="art-modal-inner" class="gp-modal-inner art-modal-inner"></div>
   </div>
 </section>

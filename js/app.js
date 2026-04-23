@@ -10,6 +10,7 @@ const VALID_PAGES = new Set([
 const pageCache = {};
 let portfolioDataPromise = null;
 let currentProjectIndex = 0;
+let currentArtIndex = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
   loadPartial('nav.html', '#navbar-placeholder').then(() => {
@@ -664,8 +665,17 @@ function appendMeta(parent, label, value) {
 }
 
 function renderArtGallery(data) {
-  const gallery = document.getElementById('art-gallery');
-  if (!gallery) return;
+  const artBg = document.getElementById('art-bg');
+  const categoryNav = document.getElementById('art-category-nav');
+  const strip = document.getElementById('art-strip');
+  const stripPrev = document.querySelector('.art-strip-prev');
+  const stripNext = document.querySelector('.art-strip-next');
+  const feature = document.getElementById('art-feature');
+  const featureImg = document.getElementById('art-feature-img');
+  const modal = document.getElementById('art-modal');
+  const modalInner = document.getElementById('art-modal-inner');
+  const modalClose = document.querySelector('.art-modal-close');
+  if (!strip || !categoryNav) return;
 
   const rawImages = Array.isArray(data.art) ? data.art : [];
   const images = [...rawImages].sort((a, b) => {
@@ -674,31 +684,248 @@ function renderArtGallery(data) {
     return ao - bo;
   });
 
-  gallery.innerHTML = '';
+  let activeCategory = 'All';
+  currentArtIndex = Math.min(currentArtIndex, Math.max(images.length - 1, 0));
+  const artFitClasses = [
+    'art-fit--loading',
+    'art-fit--tall',
+    'art-fit--portrait',
+    'art-fit--square',
+    'art-fit--landscape',
+    'art-fit--wide'
+  ];
+  const artImageFitClasses = [
+    'art-image-fit--tall',
+    'art-image-fit--portrait',
+    'art-image-fit--square',
+    'art-image-fit--landscape',
+    'art-image-fit--wide'
+  ];
+
+  function applyArtFit(target, image) {
+    if (!target || !image) return;
+    target.classList.remove(...artFitClasses);
+    image.classList.remove(...artImageFitClasses);
+
+    const width = image.naturalWidth || 0;
+    const height = image.naturalHeight || 0;
+    if (!width || !height) return;
+
+    const ratio = width / height;
+    let fit = 'square';
+    if (ratio < 0.78) fit = 'tall';
+    else if (ratio < 0.95) fit = 'portrait';
+    else if (ratio > 2.15) fit = 'wide';
+    else if (ratio > 1.25) fit = 'landscape';
+
+    target.classList.add(`art-fit--${fit}`);
+    image.classList.add(`art-image-fit--${fit}`);
+  }
+
+  function loadFittedArtImage(target, image, src, alt) {
+    if (!target || !image) return;
+    target.classList.remove(...artFitClasses);
+    image.classList.remove(...artImageFitClasses);
+
+    if (!src) {
+      image.removeAttribute('src');
+      image.alt = '';
+      return;
+    }
+
+    target.classList.add('art-fit--loading');
+    image.onload = () => applyArtFit(target, image);
+    image.onerror = () => target.classList.remove('art-fit--loading');
+    image.alt = alt || 'Portfolio artwork';
+    image.src = src;
+
+    if (image.complete && image.naturalWidth) {
+      applyArtFit(target, image);
+    }
+  }
 
   if (!images.length) {
-    gallery.innerHTML = '<p class="empty-state">No artwork has been added yet.</p>';
+    categoryNav.innerHTML = '';
+    strip.innerHTML = '<p class="empty-state">No artwork has been added yet.</p>';
     return;
   }
 
-  images.forEach(art => {
-    const card = document.createElement('button');
-    card.type = 'button';
-    card.className = 'art-card';
+  const categories = ['All', ...new Set(images.map(art => art.category || 'Uncategorized'))];
+
+  function getFiltered() {
+    if (activeCategory === 'All') return images;
+    return images.filter(art => (art.category || 'Uncategorized') === activeCategory);
+  }
+
+  function renderCategoryNav() {
+    categoryNav.innerHTML = '';
+    categories.forEach(category => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `gp-category-item art-category-item${category === activeCategory ? ' active' : ''}`;
+      button.setAttribute('role', 'listitem');
+      button.setAttribute('aria-pressed', category === activeCategory ? 'true' : 'false');
+
+      const label = document.createElement('span');
+      label.textContent = category;
+
+      const count = document.createElement('span');
+      count.className = 'art-category-count';
+      count.textContent = category === 'All'
+        ? images.length
+        : images.filter(art => (art.category || 'Uncategorized') === category).length;
+
+      button.append(label, count);
+      button.addEventListener('click', () => {
+        activeCategory = category;
+        const filtered = getFiltered();
+        if (filtered.length && !filtered.includes(images[currentArtIndex])) {
+          currentArtIndex = images.indexOf(filtered[0]);
+        }
+        renderCategoryNav();
+        renderStrip();
+        updatePanel(images[currentArtIndex]);
+      });
+
+      categoryNav.appendChild(button);
+    });
+  }
+
+  function renderStrip() {
+    const filtered = getFiltered();
+    strip.innerHTML = '';
+
+    if (!filtered.length) {
+      strip.innerHTML = '<p class="empty-state">No artwork found in this category.</p>';
+      return;
+    }
+
+    filtered.forEach(art => {
+      const globalIdx = images.indexOf(art);
+      const thumb = document.createElement('button');
+      thumb.type = 'button';
+      thumb.className = `gp-thumb art-thumb${globalIdx === currentArtIndex ? ' active' : ''}`;
+      thumb.setAttribute('role', 'listitem');
+      thumb.setAttribute('aria-label', art.title || 'Artwork');
+
+      const imgBox = document.createElement('div');
+      imgBox.className = 'gp-thumb-img art-thumb-img';
+      const image = document.createElement('img');
+      image.src = art.src;
+      image.alt = art.alt || art.title || '';
+      image.loading = 'lazy';
+      imgBox.appendChild(image);
+
+      const nameEl = document.createElement('span');
+      nameEl.className = 'gp-thumb-name art-thumb-name';
+      nameEl.textContent = art.title || 'Artwork';
+
+      thumb.append(imgBox, nameEl);
+      thumb.addEventListener('click', () => {
+        currentArtIndex = globalIdx;
+        renderStrip();
+        updatePanel(art);
+      });
+
+      strip.appendChild(thumb);
+    });
+
+    requestAnimationFrame(() => {
+      const active = strip.querySelector('.gp-thumb.active');
+      if (active) active.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
+    });
+  }
+
+  function navigate(dir) {
+    const filtered = getFiltered();
+    if (!filtered.length) return;
+    const current = filtered.indexOf(images[currentArtIndex]);
+    const next = (current + dir + filtered.length) % filtered.length;
+    currentArtIndex = images.indexOf(filtered[next]);
+    renderStrip();
+    updatePanel(images[currentArtIndex]);
+  }
+
+  function updatePanel(art) {
+    if (!art) return;
+
+    if (artBg) {
+      artBg.style.backgroundImage = art.src ? `url('${art.src}')` : "url('img/bgart.png')";
+      artBg.style.backgroundPosition = 'center';
+      artBg.style.backgroundSize = 'cover';
+    }
+
+    const wmName = document.getElementById('art-watermark-name');
+    if (wmName) wmName.textContent = art.title || '';
+
+    loadFittedArtImage(feature, featureImg, art.src, art.alt || art.title || 'Portfolio artwork');
+
+    const featured = document.getElementById('art-featured');
+    if (featured) {
+      featured.hidden = false;
+      featured.textContent = art.featured ? 'Featured' : 'Artwork';
+    }
+
+    setText('#art-name', art.title || 'Untitled Artwork');
+    setText('#art-subtitle', [art.category, art.year].filter(Boolean).join(' / '));
+    setText('#art-category-label', art.category || 'Artwork');
+    setText('#art-description', art.description || 'Portfolio artwork study.');
+
+    const metaEl = document.getElementById('art-meta');
+    if (metaEl) {
+      metaEl.innerHTML = '';
+      if (art.year) appendMeta(metaEl, 'Year', art.year);
+      if (art.category) appendMeta(metaEl, 'Category', art.category);
+      if (art.relatedProject) appendMeta(metaEl, 'Related Project', art.relatedProject);
+    }
+
+    const actionsEl = document.getElementById('art-actions');
+    if (actionsEl) {
+      actionsEl.innerHTML = '';
+      const viewBtn = document.createElement('button');
+      viewBtn.type = 'button';
+      viewBtn.className = 'gp-media-btn art-view-btn';
+      viewBtn.textContent = 'View Full Artwork';
+      viewBtn.addEventListener('click', () => openArtModal(art));
+      actionsEl.appendChild(viewBtn);
+    }
+  }
+
+  function openArtModal(art) {
+    if (!modal || !modalInner || !art) return;
+    modalInner.innerHTML = '';
 
     const image = document.createElement('img');
-    image.src = art.src;
-    image.alt = art.alt || art.title || 'Portfolio artwork';
-    image.loading = 'lazy';
+    loadFittedArtImage(modalInner, image, art.src, art.alt || art.title || 'Portfolio artwork');
+    modalInner.appendChild(image);
 
-    const caption = document.createElement('span');
-    caption.className = 'art-caption';
-    caption.textContent = [art.title, art.category, art.year].filter(Boolean).join(' - ');
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
 
-    card.append(image, caption);
-    card.addEventListener('click', () => openLightbox(art));
-    gallery.appendChild(card);
-  });
+  function closeArtModal() {
+    if (!modal) return;
+    modal.hidden = true;
+    if (modalInner) modalInner.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  if (stripPrev) stripPrev.onclick = () => navigate(-1);
+  if (stripNext) stripNext.onclick = () => navigate(1);
+  if (modalClose) modalClose.onclick = closeArtModal;
+  if (modal) modal.addEventListener('click', event => { if (event.target === modal) closeArtModal(); });
+
+  const escHandler = event => {
+    if (event.key === 'Escape') {
+      closeArtModal();
+      document.removeEventListener('keydown', escHandler);
+    }
+  };
+  document.addEventListener('keydown', escHandler);
+
+  renderCategoryNav();
+  renderStrip();
+  updatePanel(images[currentArtIndex]);
 }
 
 function renderKnowledgeBars(data) {
@@ -714,12 +941,19 @@ function renderKnowledgeBars(data) {
   }
 
   categories.forEach(category => {
+    const categoryName = category.category || 'Skills';
+    const categorySlug = categoryName
+      .toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
     const section = document.createElement('section');
-    section.className = 'knowledge-category';
+    section.className = `knowledge-category knowledge-category--${categorySlug}`;
+    section.dataset.category = categoryName;
 
     const heading = document.createElement('h2');
     heading.className = 'knowledge-heading';
-    heading.textContent = category.category || 'Skills';
+    heading.textContent = categoryName;
     section.appendChild(heading);
 
     // Sort items by sortOrder
