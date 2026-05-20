@@ -13,13 +13,17 @@
     ]
   },
   "contact": {
-    "email": "MahouSenseii@yahoo.com",
+    "email": "dev.quentindavis@gmail.com",
     "location": "United States | Open to Remote Work",
     "availability": "Open to game development, software, and interactive media roles.",
     "githubUrl": "https://github.com",
     "linkedinUrl": "https://linkedin.com",
     "discord": "",
     "itchUrl": ""
+  },
+  "resume": {
+    "url": "documents/quentin_davis_resume.docx",
+    "updated": "May 2026"
   },
   "projects": [
     {
@@ -88,8 +92,8 @@
   "role": "Full Stack Engineer / Systems Architect",
   "timeframe": "2025 - Present",
   "engine": "PyCharm",
-  "image": "",
-  "thumbnail": "",
+  "image": "img/projects/syncbridge.png",
+  "thumbnail": "img/projects/syncbridge.png",
   "characterImage": "",
   "characterAlt": "",
   "imageAlt": "",
@@ -116,7 +120,7 @@
   "engine": "PyCharm",
   "image": "img/projects/Revia.png",
   "thumbnail": "img/projects/Revia.png",
-  "characterImage": "img/projects/ReviaPH.png",
+  "characterImage": "img/projects/vecteezy_homecoming-label_1200368.png",
   "characterAlt": "REVIA character render",
   "imageAlt": "img/projects/Revia.png",
   "summary": "A locally-run AI assistant with a PySide6 desktop UI, persistent memory, real-time voice synthesis, and live Discord and Twitch integrations.",

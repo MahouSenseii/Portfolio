@@ -14,6 +14,7 @@ module.exports = merge(common, {
         { from: 'img', to: 'img' },
         { from: 'css', to: 'css' },
         { from: 'data', to: 'data' },
+        { from: 'documents', to: 'documents' },
         { from: 'fonts', to: 'fonts' },
         { from: 'music', to: 'music' },
         { from: 'pages', to: 'pages' },

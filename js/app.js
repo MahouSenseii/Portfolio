@@ -4,6 +4,7 @@ const VALID_PAGES = new Set([
   'art.html',
   'about.html',
   'knowledge.html',
+  'resume.html',
   'contact.html'
 ]);
 
@@ -132,6 +133,7 @@ function afterPageLoad(page) {
   loadPortfolioData().then(data => {
     if (page === 'home.html')      renderHome(data);
     if (page === 'about.html')     renderAbout(data);
+    if (page === 'resume.html')    renderResume(data);
     if (page === 'projects.html')  renderProjects(data);
     if (page === 'art.html')       renderArtGallery(data);
     if (page === 'knowledge.html') renderKnowledgeBars(data);
@@ -316,6 +318,17 @@ function renderAbout(data) {
 
 // ─── Project showcase ───────────────────────────────────────────────────────
 // Full-bleed art background + left tag sidebar + info card + bottom strip
+function renderResume(data) {
+  const contact = data.contact || {};
+  const resume = data.resume || {};
+  const email = contact.email || '';
+  const resumeUrl = resume.url || 'documents/quentin_davis_resume.docx';
+
+  setHref('#resume-download-link', resumeUrl);
+  setHref('#resume-email-link', email ? `mailto:${email}` : '');
+  setText('#resume-email-text', email || 'Email Quentin');
+}
+
 function renderProjects(data) {
   const rawProjects = Array.isArray(data.projects) ? data.projects : [];
   const projects = [...rawProjects].sort((a, b) => {
