@@ -1219,8 +1219,14 @@ function setSocialLink(selector, url) {
   const safeUrl = safeHttpUrl(url);
   if (safeUrl) {
     element.href = safeUrl;
+    const image = element.querySelector('img[data-src]');
+    if (image && !image.getAttribute('src')) {
+      image.src = image.dataset.src;
+    }
     element.hidden = false;
   } else {
+    const image = element.querySelector('img[data-src]');
+    if (image) image.removeAttribute('src');
     element.hidden = true;
   }
 }
