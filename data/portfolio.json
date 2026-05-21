@@ -16,8 +16,8 @@
     "email": "dev.quentindavis@gmail.com",
     "location": "United States | Open to Remote Work",
     "availability": "Open to game development, software, and interactive media roles.",
-    "githubUrl": "https://github.com",
-    "linkedinUrl": "https://linkedin.com",
+    "githubUrl": "mahousenseii.github.io/Portfolio",
+    "linkedinUrl": "www.linkedin.com/in/quentin-f-davis",
     "discord": "",
     "itchUrl": ""
   },
@@ -177,15 +177,15 @@
     {
       "category": "Programming",
       "items": [
-        { "name": "C++", "percent": 70, "sortOrder": 1 },
-        { "name": "JavaScript", "percent": 50, "sortOrder": 2 },
-        { "name": "Python", "percent": 50, "sortOrder": 3 }
+        { "name": "C++", "percent": 50, "sortOrder": 1 },
+        { "name": "JavaScript", "percent": 24, "sortOrder": 2 },
+        { "name": "Python", "percent": 34, "sortOrder": 3 }
       ]
     },
     {
       "category": "Web Development",
       "items": [
-        { "name": "HTML & CSS", "percent": 65, "sortOrder": 1 },
+        { "name": "HTML & CSS", "percent": 54, "sortOrder": 1 },
         { "name": "TypeScript", "percent": 35, "sortOrder": 2 },
         { "name": "Node.js", "percent": 45, "sortOrder": 3 },
         { "name": "React", "percent": 40, "sortOrder": 4 }
@@ -206,7 +206,7 @@
     {
       "category": "Production",
       "items": [
-        { "name": "Git and GitHub", "percent": 60, "sortOrder": 1 },
+        { "name": "Git and GitHub", "percent": 45, "sortOrder": 1 },
         { "name": "Debugging", "percent": 60, "sortOrder": 2 },
         { "name": "UI / UX Design", "percent": 54, "sortOrder": 3 },
         { "name": "Game Profiling", "percent": 50, "sortOrder": 4 }
