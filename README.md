@@ -5,12 +5,11 @@ This is a static portfolio site. The layout lives in `pages/`, `css/`, and `js/`
 ## Update Your Content
 
 - Projects: edit the `"projects"` list in `data/portfolio.json`.
+- Project and art categories can be a single string or an array, such as `"category": ["Interactive Web", "Games"]`.
 - Project categories are intentionally broad: `Games`, `Interactive Web`, `Art & 3D`, and `Tools & Apps`. Use tags for the specific type.
 - Skills: edit the `"skills"` list and change each `"percent"` value. The level badge is calculated automatically from that number.
 - Art: add image files to `img/art/`, then add matching entries to the `"art"` list.
 - Contact info: edit the `"contact"` section.
-
-More detailed editing notes are in `data/README.md`.
 
 ## Run Locally
 

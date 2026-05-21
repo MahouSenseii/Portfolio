@@ -285,7 +285,6 @@ function initMusicPlayer() {
   });
 }
 
-// ─── Page renderers ────────────────────────────────────────────────────────────
 
 function renderHome(data) {
   setText('#home-name', data.profile.name);
@@ -316,8 +315,6 @@ function renderAbout(data) {
   });
 }
 
-// ─── Project showcase ───────────────────────────────────────────────────────
-// Full-bleed art background + left tag sidebar + info card + bottom strip
 function renderResume(data) {
   const contact = data.contact || {};
   const resume = data.resume || {};
@@ -361,15 +358,16 @@ function renderProjects(data) {
   currentProjectIndex = Math.min(currentProjectIndex, projects.length - 1);
 
   const categorySet = new Set(['All']);
-  projects.forEach(project => categorySet.add(project.category || 'Projects'));
+  projects.forEach(project => {
+    getCategoryList(project, 'Projects').forEach(category => categorySet.add(category));
+  });
   const allCategories = [...categorySet];
 
   function getFiltered() {
     if (activeCategory === 'All') return projects;
-    return projects.filter(project => (project.category || 'Projects') === activeCategory);
+    return projects.filter(project => getCategoryList(project, 'Projects').includes(activeCategory));
   }
 
-  // ── Tag sidebar ────────────────────────────────────────────────────────
   function renderCategoryNav() {
     categoryNav.innerHTML = '';
     allCategories.forEach(category => {
@@ -392,7 +390,6 @@ function renderProjects(data) {
     });
   }
 
-  // ── Bottom thumbnail strip ─────────────────────────────────────────────
   function renderStrip() {
     strip.innerHTML = '';
     const filtered = getFiltered();
@@ -437,14 +434,12 @@ function renderProjects(data) {
       strip.appendChild(thumb);
     });
 
-    // Scroll active into view
     requestAnimationFrame(() => {
       const active = strip.querySelector('.gp-thumb.active');
       if (active) active.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
     });
   }
 
-  // ── Arrow navigation ───────────────────────────────────────────────────
   function navigate(dir) {
     const filtered = getFiltered();
     if (!filtered.length) return;
@@ -458,11 +453,9 @@ function renderProjects(data) {
   if (stripPrev) stripPrev.onclick = () => navigate(-1);
   if (stripNext) stripNext.onclick = () => navigate(1);
 
-  // ── Project detail panel ───────────────────────────────────────────────
   function updatePanel(project) {
     if (!project) return;
 
-    // Background art
     if (gpBg) {
       gpBg.style.backgroundImage = project.image
         ? `url('${project.image}')`
@@ -471,11 +464,9 @@ function renderProjects(data) {
       gpBg.style.backgroundSize = 'cover';
     }
 
-    // Watermark project name
     const wmName = document.getElementById('gp-watermark-name');
     if (wmName) wmName.textContent = project.name || '';
 
-    // Optional right-side project character/render image
     const characterImage = project.characterImage || '';
     if (characterWrap && characterImg) {
       characterWrap.hidden = !characterImage;
@@ -489,18 +480,15 @@ function renderProjects(data) {
       }
     }
 
-    // Featured badge
     const featEl = document.getElementById('gp-featured');
     if (featEl) featEl.hidden = !project.featured;
 
-    // Title, role, summary, description
     setText('#gp-name',    project.name    || 'Untitled Project');
-    setText('#gp-subtitle', project.subtitle || project.category || '');
+    setText('#gp-subtitle', project.subtitle || formatCategories(project, 'Projects'));
     setText('#gp-role',    project.role    || '');
     setText('#gp-summary', project.summary || '');
     setText('#gp-desc',    project.details || '');
 
-    // Tag chips
     const tagsEl = document.getElementById('gp-tags');
     if (tagsEl) {
       tagsEl.innerHTML = '';
@@ -512,7 +500,6 @@ function renderProjects(data) {
       });
     }
 
-    // Meta pills (engine + timeframe)
     const metaEl = document.getElementById('gp-meta');
     if (metaEl) {
       metaEl.innerHTML = '';
@@ -520,7 +507,6 @@ function renderProjects(data) {
       if (project.timeframe) appendMeta(metaEl, 'Timeframe', project.timeframe);
     }
 
-    // Highlights
     const hiEl = document.getElementById('gp-highlights');
     if (hiEl) {
       hiEl.innerHTML = '';
@@ -532,7 +518,6 @@ function renderProjects(data) {
       });
     }
 
-    // Links
     const linksEl = document.getElementById('gp-links');
     if (linksEl) {
       linksEl.innerHTML = '';
@@ -549,7 +534,6 @@ function renderProjects(data) {
       });
     }
 
-    // Media action buttons
     const actionsEl = document.getElementById('gp-actions');
     if (actionsEl) {
       actionsEl.innerHTML = '';
@@ -566,7 +550,6 @@ function renderProjects(data) {
         actionsEl.appendChild(btn);
       }
 
-      // Gallery button for any project image/gallery image.
       const allImgs = [];
       if (project.image) allImgs.push({ src: project.image, alt: project.imageAlt || project.name || '' });
       (project.galleryImages || []).forEach((img, i) => {
@@ -588,7 +571,6 @@ function renderProjects(data) {
     }
   }
 
-  // ── Media modal helpers ────────────────────────────────────────────────
   function openMedia(src, isImage) {
     if (!modal || !modalInner) return;
     modalInner.innerHTML = '';
@@ -664,7 +646,6 @@ function renderProjects(data) {
   const escHandler = e => { if (e.key === 'Escape') { closeModal(); document.removeEventListener('keydown', escHandler); } };
   document.addEventListener('keydown', escHandler);
 
-  // ── First render ───────────────────────────────────────────────────────
   renderCategoryNav();
   renderStrip();
   updatePanel(projects[currentProjectIndex]);
@@ -675,6 +656,20 @@ function appendMeta(parent, label, value) {
   const item = document.createElement('span');
   item.textContent = `${label}: ${value}`;
   parent.appendChild(item);
+}
+
+function getCategoryList(item, fallback) {
+  const raw = item.categories ?? item.category;
+  const values = Array.isArray(raw) ? raw : [raw];
+  const categories = values
+    .map(value => String(value || '').trim())
+    .filter(Boolean);
+
+  return categories.length ? [...new Set(categories)] : [fallback];
+}
+
+function formatCategories(item, fallback) {
+  return getCategoryList(item, fallback).join(' / ');
 }
 
 function renderArtGallery(data) {
@@ -763,11 +758,15 @@ function renderArtGallery(data) {
     return;
   }
 
-  const categories = ['All', ...new Set(images.map(art => art.category || 'Uncategorized'))];
+  const categorySet = new Set(['All']);
+  images.forEach(art => {
+    getCategoryList(art, 'Uncategorized').forEach(category => categorySet.add(category));
+  });
+  const categories = [...categorySet];
 
   function getFiltered() {
     if (activeCategory === 'All') return images;
-    return images.filter(art => (art.category || 'Uncategorized') === activeCategory);
+    return images.filter(art => getCategoryList(art, 'Uncategorized').includes(activeCategory));
   }
 
   function renderCategoryNav() {
@@ -786,7 +785,7 @@ function renderArtGallery(data) {
       count.className = 'art-category-count';
       count.textContent = category === 'All'
         ? images.length
-        : images.filter(art => (art.category || 'Uncategorized') === category).length;
+        : images.filter(art => getCategoryList(art, 'Uncategorized').includes(category)).length;
 
       button.append(label, count);
       button.addEventListener('click', () => {
@@ -880,15 +879,15 @@ function renderArtGallery(data) {
     }
 
     setText('#art-name', art.title || 'Untitled Artwork');
-    setText('#art-subtitle', [art.category, art.year].filter(Boolean).join(' / '));
-    setText('#art-category-label', art.category || 'Artwork');
+    setText('#art-subtitle', [formatCategories(art, 'Artwork'), art.year].filter(Boolean).join(' / '));
+    setText('#art-category-label', formatCategories(art, 'Artwork'));
     setText('#art-description', art.description || 'Portfolio artwork study.');
 
     const metaEl = document.getElementById('art-meta');
     if (metaEl) {
       metaEl.innerHTML = '';
       if (art.year) appendMeta(metaEl, 'Year', art.year);
-      if (art.category) appendMeta(metaEl, 'Category', art.category);
+      appendMeta(metaEl, 'Category', formatCategories(art, 'Artwork'));
       if (art.relatedProject) appendMeta(metaEl, 'Related Project', art.relatedProject);
     }
 
@@ -969,7 +968,6 @@ function renderKnowledgeBars(data) {
     heading.textContent = categoryName;
     section.appendChild(heading);
 
-    // Sort items by sortOrder
     const items = Array.isArray(category.items) ? [...category.items].sort((a, b) => {
       const ao = Number.isFinite(Number(a.sortOrder)) ? Number(a.sortOrder) : 999;
       const bo = Number.isFinite(Number(b.sortOrder)) ? Number(b.sortOrder) : 999;
@@ -1098,7 +1096,7 @@ function openLightbox(art) {
 
   image.src = art.src;
   image.alt = art.alt || art.title || 'Portfolio artwork';
-  titleEl.textContent = [art.title, art.category, art.year].filter(Boolean).join(' — ');
+  titleEl.textContent = [art.title, formatCategories(art, 'Artwork'), art.year].filter(Boolean).join(' — ');
   if (art.description) {
     descEl.textContent = art.description;
   } else {
@@ -1130,25 +1128,18 @@ function requestFullscreen(element) {
   else if (element.mozRequestFullScreen) element.mozRequestFullScreen();
 }
 
-// ─── Helpers ───────────────────────────────────────────────────────────────────
 
-/**
- * Converts a YouTube or Vimeo watch URL into an embeddable iframe src.
- * Returns empty string if the URL is not a recognized video platform.
- */
 function getVideoEmbedUrl(url) {
   if (!url) return '';
   try {
     const u = new URL(url);
 
-    // YouTube: youtube.com/watch?v=ID  or  youtu.be/ID
     if (u.hostname.includes('youtube.com') || u.hostname.includes('youtu.be')) {
       let videoId = u.searchParams.get('v');
       if (!videoId) videoId = u.pathname.split('/').filter(Boolean).pop();
       return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
     }
 
-    // Vimeo: vimeo.com/ID
     if (u.hostname.includes('vimeo.com')) {
       const videoId = u.pathname.split('/').filter(Boolean).pop();
       return videoId ? `https://player.vimeo.com/video/${videoId}` : '';
@@ -1160,10 +1151,6 @@ function getVideoEmbedUrl(url) {
   }
 }
 
-/**
- * Derives a human-readable level label from a percent value when
- * no explicit level is stored in the data.
- */
 function deriveLevel(percent) {
   if (percent >= 85) return 'Expert';
   if (percent >= 70) return 'Advanced';

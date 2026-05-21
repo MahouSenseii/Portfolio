@@ -183,7 +183,6 @@ a:hover {
   text-align: center;
 }
 
-/* Navbar */
 .custom-navbar {
   min-height: var(--nav-height);
   background-color: rgba(8, 8, 6, 0.52);
@@ -371,7 +370,6 @@ a:hover {
   background: rgba(255, 204, 53, 0.12);
 }
 
-/* Home */
 #home {
   display: grid;
   min-height: 100svh;
@@ -414,7 +412,6 @@ a:hover {
   text-shadow: 0 0 18px rgba(0, 0, 0, 0.95);
 }
 
-/* Projects */
 #projects {
   background-image: url('../img/bgprojects.png');
   background-position: center top;
@@ -604,7 +601,6 @@ a:hover {
   cursor: pointer;
 }
 
-/* Art */
 #art {
   background-image: url('../img/art/illustration-9.jpg');
 }
@@ -707,7 +703,6 @@ a:hover {
   cursor: pointer;
 }
 
-/* About */
 #about {
   display: grid;
   align-items: center;
@@ -741,7 +736,6 @@ a:hover {
   margin-bottom: 0;
 }
 
-/* Knowledge */
 #knowledge {
   background-image: url('../img/bgknowledge.png');
 }
@@ -812,7 +806,6 @@ a:hover {
   transition: width 0.8s ease;
 }
 
-/* Contact */
 #contact {
   display: grid;
   align-items: center;
@@ -920,7 +913,6 @@ a:hover {
   color: #12100b;
 }
 
-/* Footer */
 .footer {
   width: 100%;
   margin-top: 0;
@@ -966,36 +958,21 @@ a:hover {
   transform: scale(1.08);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   Project Showcase Page
-   ─────────────────────────────────────────────────────────────────────────
-   Layout mirrors a character showcase page:
-     • Full-bleed project art as background
-     • Narrow left sidebar for tag/category filter
-     • Large bold title + scrollable info card on left
-     • Bottom strip of project portrait thumbnails
-     • Media modal for embeds / videos / gallery
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/* ── Page shell ───────────────────────────────────────────────────────────── */
 .proj-page {
   padding: 0;
   min-height: 100vh;
   background: #06080f;
 }
 
-/* Remove the inherited dark gradient overlays from .page-section */
 .proj-page::before,
 .proj-page::after {
   display: none;
 }
 
-/* Erase the static bg-image set on #projects */
 #projects.proj-page {
   background-image: none;
 }
 
-/* ── Full-bleed background art (swapped by JS per project) ────────────────── */
 .gp-bg {
   position: absolute;
   inset: 0;
@@ -1006,7 +983,6 @@ a:hover {
   z-index: 0;
 }
 
-/* ── Gradient overlays ────────────────────────────────────────────────────── */
 .gp-overlay-left {
   position: absolute;
   inset: 0;
@@ -1032,7 +1008,6 @@ a:hover {
   z-index: 1;
 }
 
-/* ── Faded watermark text (right side, like "Mondstadt") ─────────────────── */
 .gp-watermark {
   position: absolute;
   right: 11px;
@@ -1063,7 +1038,6 @@ a:hover {
   letter-spacing: 0.05em;
 }
 
-/* ── Left sidebar (tag / category filter) ────────────────────────────────── */
 .gp-sidebar {
   position: absolute;
   top: var(--nav-height);
@@ -1104,7 +1078,6 @@ a:hover {
   transition: color 0.2s ease, background 0.2s ease;
 }
 
-/* Default bullet — small dot */
 .gp-category-item::before {
   content: "";
   flex-shrink: 0;
@@ -1120,7 +1093,6 @@ a:hover {
   background: rgba(255, 204, 53, 0.06);
 }
 
-/* Active item with gold diamond selector */
 .gp-category-item.active {
   color: #fff;
   background: rgba(255, 204, 53, 0.1);
@@ -1132,7 +1104,6 @@ a:hover {
   transform: rotate(45deg);
 }
 
-/* ── Main content overlay ─────────────────────────────────────────────────── */
 .gp-content {
   position: absolute;
   top: var(--nav-height);
@@ -1146,7 +1117,6 @@ a:hover {
   z-index: 3;
 }
 
-/* Large project name — matches "JEAN" style */
 .gp-proj-name {
   margin: 0 0 10px;
   font-family: Georgia, 'Times New Roman', serif;
@@ -1169,7 +1139,6 @@ a:hover {
   line-height: 1.4;
 }
 
-/* Gold accent rule below the title */
 .gp-name-rule {
   width: 500px;
   height: 2px;
@@ -1178,7 +1147,6 @@ a:hover {
   border-radius: 1px;
 }
 
-/* ── Info card (dark panel with gold left border) ─────────────────────────── */
 .gp-card {
   display: flex;
   flex-direction: column;
@@ -1222,7 +1190,6 @@ a:hover {
   line-height: 1.75;
 }
 
-/* Media action buttons inside the card */
 .gp-media-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1252,7 +1219,6 @@ a:hover {
   background: rgba(255, 204, 53, 0.22);
 }
 
-/* ── Bottom thumbnail strip ───────────────────────────────────────────────── */
 .gp-strip-wrap {
   position: absolute;
   bottom: 0;
@@ -1278,7 +1244,6 @@ a:hover {
 
 .gp-strip::-webkit-scrollbar { display: none; }
 
-/* Arrow buttons on each side of the strip */
 .gp-strip-btn {
   flex-shrink: 0;
   display: inline-grid;
@@ -1299,7 +1264,6 @@ a:hover {
   background: rgba(255, 204, 53, 0.18);
 }
 
-/* Individual project thumbnail card */
 .gp-thumb {
   flex-shrink: 0;
   width: 96px;
@@ -1318,7 +1282,6 @@ a:hover {
   transform: translateY(-5px);
 }
 
-/* Portrait image box (taller than wide, like character portraits) */
 .gp-thumb-img {
   width: 96px;
   height: 116px;
@@ -1381,7 +1344,6 @@ a:hover {
   color: var(--gold);
 }
 
-/* ── Media modal ──────────────────────────────────────────────────────────── */
 .gp-media-modal {
   position: fixed;
   inset: 0;
@@ -1440,7 +1402,6 @@ a:hover {
   color: var(--gold);
 }
 
-/* Gallery nav inside modal */
 .gp-gallery-nav {
   position: absolute;
   bottom: 14px;
@@ -1470,7 +1431,6 @@ a:hover {
 
 .gp-gallery-arrow:hover { opacity: 0.7; }
 
-/* ── Responsive overrides ─────────────────────────────────────────────────── */
 @media (max-width: 991px) {
   .gp-sidebar {
     width: 128px;
@@ -1641,7 +1601,6 @@ a:hover {
   }
 }
 
-/* ── Featured badge ──────────────────────────────────────────────────────── */
 .featured-badge {
   display: inline-flex;
   align-items: center;
@@ -1664,7 +1623,6 @@ a:hover {
   font-size: 0.85rem;
 }
 
-/* ── Project tags ─────────────────────────────────────────────────────────── */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1690,7 +1648,6 @@ a:hover {
   border-color: rgba(82, 215, 201, 0.7);
 }
 
-/* ── Gallery thumbnails ───────────────────────────────────────────────────── */
 .project-media-wrapper {
   display: flex;
   flex-direction: column;
@@ -1730,7 +1687,6 @@ a:hover {
   transform: translateY(-2px);
 }
 
-/* ── Skill level badges ───────────────────────────────────────────────────── */
 .knowledge-name-group {
   display: flex;
   align-items: center;
@@ -1780,7 +1736,6 @@ a:hover {
   color: var(--gold);
 }
 
-/* ── Lightbox caption ─────────────────────────────────────────────────────── */
 .lightbox-caption {
   margin-top: 12px;
   text-align: center;
@@ -1865,7 +1820,6 @@ a:hover {
   }
 }
 
-/* Project showcase polish */
 :root {
   --nav-height: 64px;
 }
@@ -2446,7 +2400,6 @@ a:hover {
   }
 }
 
-/* Site-wide project theme alignment */
 body {
   background:
     radial-gradient(circle at 50% 0%, rgba(144, 232, 255, 0.08), transparent 34rem),
@@ -2806,7 +2759,6 @@ body {
   }
 }
 
-/* Genshin-inspired header and home restoration */
 #home.page-section:not(.proj-page) {
   display: grid;
   min-height: 100svh;
@@ -3020,7 +2972,6 @@ body {
   }
 }
 
-/* Navbar logo and music control fit */
 .custom-navbar .container-fluid {
   position: relative;
   gap: 12px;
@@ -3180,7 +3131,6 @@ body {
   }
 }
 
-/* Ornamental music toggle */
 .nav-audio {
   position: relative;
   display: inline-grid !important;
@@ -3318,7 +3268,6 @@ body {
   }
 }
 
-/* Knowledge skill board layout */
 #knowledge.page-section:not(.proj-page) {
   align-items: start;
   padding-bottom: 72px;
@@ -3499,7 +3448,6 @@ body {
   }
 }
 
-/* Art category filtering */
 .art-layout {
   display: grid;
   grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
@@ -3639,7 +3587,6 @@ body {
   }
 }
 
-/* Art-focused showcase page */
 .art-showcase {
   padding: 0;
   min-height: 100vh;
