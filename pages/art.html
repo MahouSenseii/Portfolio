@@ -1,43 +1,45 @@
-<section id="art" class="page-section art-showcase">
-  <div id="art-bg" class="gp-bg art-bg" aria-hidden="true"></div>
-  <div class="gp-overlay-left art-overlay-left" aria-hidden="true"></div>
-  <div class="gp-overlay-bottom art-overlay-bottom" aria-hidden="true"></div>
+<section id="art" class="page-section showcase showcase--art" data-theme="art">
+  <p class="sc-watermark" aria-hidden="true">
+    <span class="sc-watermark-label">Art Showcase</span>
+    <span class="sc-watermark-name" data-sc-watermark></span>
+  </p>
 
-  <div class="gp-watermark art-watermark" aria-hidden="true">
-    <span class="gp-watermark-label">Art Showcase</span>
-    <span id="art-watermark-name" class="gp-watermark-name"></span>
-  </div>
+  <div class="sc-stage">
+    <aside class="sc-rail">
+      <p class="sc-rail-title" id="art-rail-title">Collections</p>
+      <div class="sc-rail-list" data-sc-rail role="group" aria-labelledby="art-rail-title"></div>
+    </aside>
 
-  <aside class="gp-sidebar art-sidebar" aria-label="Filter artwork by category">
-    <div id="art-category-nav" class="gp-category-nav art-category-nav" role="list"></div>
-  </aside>
+    <div class="sc-info">
+      <div class="sc-info-head">
+        <div class="sc-badges" data-sc-badges></div>
+        <h1 class="sc-title" data-sc-title></h1>
+        <p class="sc-kicker" data-sc-kicker></p>
+        <hr class="rule rule--diamond">
+      </div>
 
-  <div class="gp-content art-content">
-    <p id="art-featured" class="featured-badge" hidden>Featured</p>
-    <h1 id="art-name" class="gp-proj-name art-name"></h1>
-    <p id="art-subtitle" class="gp-subtitle art-subtitle"></p>
-    <div class="gp-name-rule art-name-rule" aria-hidden="true"></div>
-
-    <div class="gp-card art-info-card">
-      <p id="art-category-label" class="gp-card-eyebrow"></p>
-      <p id="art-description" class="gp-card-summary"></p>
-      <div id="art-meta" class="project-meta art-meta"></div>
-      <div id="art-actions" class="gp-media-actions"></div>
+      <div class="sc-info-body">
+        <p class="sc-summary" data-sc-summary></p>
+        <dl class="meta-list sc-meta" data-sc-meta></dl>
+        <div class="button-row sc-actions" data-sc-actions></div>
+      </div>
     </div>
+
+    <figure class="sc-hero" data-sc-hero>
+      <div class="sc-hero-plate">
+        <img class="sc-hero-img" data-sc-hero-img src="" alt="" decoding="async">
+      </div>
+    </figure>
   </div>
 
-  <figure id="art-feature" class="art-feature">
-    <img id="art-feature-img" class="art-feature-img" src="" alt="">
-  </figure>
-
-  <div class="gp-strip-wrap art-strip-wrap">
-    <button class="gp-strip-btn art-strip-prev" type="button" aria-label="Previous artwork">&#10094;</button>
-    <div id="art-strip" class="gp-strip art-strip" role="list" aria-label="All artwork"></div>
-    <button class="gp-strip-btn art-strip-next" type="button" aria-label="Next artwork">&#10095;</button>
+  <div class="sc-selector">
+    <button class="sc-arrow" type="button" data-sc-prev aria-label="Previous artwork">&#10094;</button>
+    <div class="sc-track" data-sc-track tabindex="0" role="group" aria-label="Artwork selector"></div>
+    <button class="sc-arrow" type="button" data-sc-next aria-label="Next artwork">&#10095;</button>
   </div>
 
-  <div id="art-modal" class="gp-media-modal art-modal" hidden role="dialog" aria-modal="true" aria-label="Artwork preview">
-    <button class="gp-modal-close art-modal-close" type="button" aria-label="Close artwork preview">&#10005;</button>
-    <div id="art-modal-inner" class="gp-modal-inner art-modal-inner"></div>
+  <div class="overlay overlay--media" data-media-viewer hidden role="dialog" aria-modal="true" aria-label="Artwork preview">
+    <button class="overlay-close" type="button" data-overlay-close aria-label="Close artwork preview">&#10005;</button>
+    <div class="overlay-stage" data-media-stage></div>
   </div>
 </section>

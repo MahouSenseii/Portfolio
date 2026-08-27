@@ -1,62 +1,64 @@
-<nav class="navbar navbar-expand-lg fixed-top custom-navbar navbar-dark">
-  <div class="container-fluid">
-    <div class="nav-audio d-flex align-items-center">
-      <img id="music-btn" class="music-icon" src="img/music-off.png" alt="Toggle music" role="button" tabindex="0">
-    </div>
+<nav class="site-nav" aria-label="Primary">
+  <div class="site-nav-inner">
+    <button id="music-btn" class="nav-music" type="button" aria-label="Play background music" aria-pressed="false">
+      <img class="music-icon" src="img/music-off.webp" alt="">
+    </button>
 
-    <a class="navbar-brand" href="home.html" aria-label="Home">
-      <img src="img/logo.png" alt="Quentin F. Davis logo">
+    <a class="nav-brand" href="#home.html" aria-label="Home">
+      <img src="img/logo.webp" alt="Quentin F. Davis logo" width="54" height="54">
     </a>
 
     <div id="mini-music-player" class="mini-player" hidden>
-      <div class="song-title-container">
-        <span id="song-title">Song Name</span>
-      </div>
-
-      <div class="progress-container">
-        <span id="current-time">0:00</span>
-        <label class="visually-hidden" for="progress-bar">Music progress</label>
-        <input type="range" id="progress-bar" value="0" min="0" max="100">
-        <span id="total-time">0:00</span>
-      </div>
-
-      <div class="player-controls">
-        <button id="prev-song" type="button" aria-label="Previous song">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+      <div class="mini-player-transport">
+        <button id="prev-song" class="mini-player-btn" type="button" aria-label="Previous song">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
             <path d="M18 4v16l-8-8 8-8zM6 4v16h2V4H6z"/>
           </svg>
         </button>
-        <button id="toggle-play" type="button" aria-label="Play music">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+        <button id="toggle-play" class="mini-player-btn mini-player-btn--play" type="button" aria-label="Play music">
+          <svg class="mini-player-icon-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
             <path d="M8 5v14l11-7z"/>
           </svg>
+          <svg class="mini-player-icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>
+          </svg>
         </button>
-        <button id="next-song" type="button" aria-label="Next song">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+        <button id="next-song" class="mini-player-btn" type="button" aria-label="Next song">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
             <path d="M6 4v16l8-8-8-8zM18 4v16h-2V4h2z"/>
           </svg>
         </button>
       </div>
+
+      <div class="mini-player-meta">
+        <p id="song-title" class="mini-player-title">Song Name</p>
+        <p class="mini-player-time">
+          <span id="current-time">0:00</span><span aria-hidden="true">/</span><span id="total-time">0:00</span>
+        </p>
+      </div>
+
+      <label class="visually-hidden" for="progress-bar">Music progress</label>
+      <input type="range" id="progress-bar" class="mini-player-scrub" value="0" min="0" max="100" step="0.1">
     </div>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-      <svg class="navbar-menu-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+    <div class="nav-menu" id="nav-menu">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="#home.html">Home</a></li>
+        <li><a class="nav-link" href="#projects.html">Projects</a></li>
+        <li><a class="nav-link" href="#art.html">Art</a></li>
+        <li><a class="nav-link" href="#about.html">About Me</a></li>
+        <li><a class="nav-link" href="#knowledge.html">Knowledge</a></li>
+        <li><a class="nav-link" href="#resume.html">Resume</a></li>
+        <li><a class="nav-link" href="#contact.html">Contact Me</a></li>
+      </ul>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
         <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-center" id="mainNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="art.html">Art</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About Me</a></li>
-        <li class="nav-item"><a class="nav-link" href="knowledge.html">Knowledge</a></li>
-        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Me</a></li>
-      </ul>
-    </div>
-
-    <a class="nav-cta" href="contact.html">Hire Me</a>
+    <a class="nav-cta btn btn--primary" href="#contact.html">Hire Me</a>
   </div>
 </nav>

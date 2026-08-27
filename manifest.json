@@ -1,12 +1,12 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "QFD Portfolio",
+  "name": "Quentin F. Davis Portfolio",
   "icons": [{
     "src": "icon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],
   "start_url": ".",
-  "background_color": "#fafafa",
-  "theme_color": "#fafafa"
+  "background_color": "#fbf8f1",
+  "theme_color": "#fbf8f1"
 }

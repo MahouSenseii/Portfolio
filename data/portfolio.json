@@ -2,298 +2,795 @@
   "profile": {
     "name": "Quentin F. Davis",
     "roles": [
+      "Developer",
+      "AI Engineer",
       "Game Developer",
-      "Designer",
-      "Creator",
-      "Programmer"
+      "Artist"
     ],
-    "tagline": "Crafting game systems, interactive experiences, and polished user-facing tools.",
+    "tagline": "I build gameplay systems, AI companions, and production software, then draw the worlds they live in.",
     "about": [
-      "Full-stack software engineer and C++ game programmer with 6+ years building production systems across AI backends, cloud infrastructure, and Unreal Engine. Shipped a local AI assistant with vLLM inference and Redis-backed memory, an Azure-hosted multi-platform sync orchestration service, a cloud-ready FastAPI authorization workflow system, and a modular UE5 action RPG all from architecture through deployment. Rare cross-domain fluency across game engines, backend services, AI pipelines, and cloud infrastructure with a consistent focus on clean, maintainable code."
+      "I am a software engineer who works in C++ first and has spent the last several years building things that have to run, not just demo. Two of my systems are deployed and in daily use: SyncBridge, an Azure-backed orchestration service that keeps five meeting and recording platforms in sync, and WorkingDoc Automation, a FastAPI app that imports, merges, and reconciles authorization records without destroying the manual corrections people have already made.",
+      "The other half of my work is real-time. Project Hunter is an Unreal Engine 5 action RPG built on the Gameplay Ability System, where character capability lives in components rather than one enormous pawn so combat, stats, and traversal can be iterated separately. REVIA is a local-first desktop AI companion I originally prototyped in Python and then rewrote in C++ with Qt 6, running llama.cpp and whisper.cpp on the user's own hardware with SQLite-backed memory. Rewriting it taught me more about latency, threading, and lifetime management than any tutorial project would have.",
+      "I have also been drawing for seventeen years, which is not a side note. Character sheets, background paintings, and colour work are how I learned composition, readability, and what a player's eye actually does with a frame. It is the reason I care about UI hierarchy in UMG and Qt as much as I care about the systems underneath, and why I am most useful on teams where gameplay code and presentation are not separate conversations."
+    ],
+    "disciplines": [
+      {
+        "theme": "apps",
+        "title": "Apps",
+        "blurb": "Deployed cloud tools and internal consoles that carry real operational load.",
+        "href": "#projects.html?category=Apps"
+      },
+      {
+        "theme": "ai",
+        "title": "AI",
+        "blurb": "Local inference, persistent memory, and voice systems that run on your own hardware.",
+        "href": "#projects.html?category=AI"
+      },
+      {
+        "theme": "games",
+        "title": "Games",
+        "blurb": "Modular gameplay architecture in Unreal Engine and hand-built interactive stories.",
+        "href": "#projects.html?category=Games"
+      },
+      {
+        "theme": "art",
+        "title": "Art",
+        "blurb": "Character design, background painting, and colour work for interactive scenes.",
+        "href": "#art.html"
+      }
     ]
+  },
+  "filters": {
+    "projects": ["Apps", "AI", "Games", "Web"],
+    "art": ["Character Art", "Environment Art", "Visual Novel Scene", "Colorist", "Cover Art", "Digital Art"]
   },
   "contact": {
     "email": "dev.quentindavis@gmail.com",
     "location": "United States | Open to Remote Work",
     "availability": "Open to game development, software, and interactive media roles.",
-    "githubUrl": "mahousenseii.github.io/Portfolio",
-    "linkedinUrl": "www.linkedin.com/in/quentin-f-davis",
-    "discord": "",
-    "itchUrl": ""
+    "githubUrl": "https://github.com/MahouSenseii",
+    "linkedinUrl": "https://www.linkedin.com/in/quentin-f-davis"
   },
   "resume": {
     "url": "documents/quentin_davis_resume.docx",
-    "updated": "May 2026"
+    "updated": "August 2026",
+    "role": "C++ Gameplay & Systems Developer",
+    "summary": "C++ developer with production experience across Unreal Engine gameplay systems, local AI desktop applications, and deployed cloud services. Comfortable owning a system from architecture through deployment, and equally comfortable working next to designers and artists on how it should feel.",
+    "technicalSkills": [
+      "C++",
+      "Unreal Engine 5",
+      "Gameplay Ability System",
+      "Blueprint/C++ Integration",
+      "Qt 6",
+      "Python",
+      "FastAPI",
+      "TypeScript",
+      "React",
+      "Azure",
+      "SQL & SQLite",
+      "llama.cpp",
+      "Docker",
+      "CMake",
+      "Git"
+    ],
+    "strengths": [
+      "Gameplay and systems architecture in C++, with a bias toward modular, component-driven design",
+      "Taking a system all the way to deployment and then keeping it running",
+      "Working across engineering and art, and translating between the two",
+      "Debugging, profiling, and reducing complexity in code that already exists"
+    ],
+    "experience": [
+      {
+        "title": "Programmer",
+        "organization": "Kukua Institute",
+        "location": "Remote",
+        "timeframe": "Present",
+        "highlights": [
+          "Develop and maintain software systems that support organizational technical infrastructure and workflow tooling.",
+          "Collaborate cross-functionally to architect and deliver scalable solutions."
+        ]
+      },
+      {
+        "title": "Junior Programmer",
+        "organization": "AI for Better Lives",
+        "location": "Remote",
+        "timeframe": "Jan 2020 - 2026",
+        "highlights": [
+          "Designed and implemented low-level systems supporting higher-level pipelines.",
+          "Built and maintained a WinForms knowledge representation tool for AI-backed database workflows."
+        ]
+      },
+      {
+        "title": "Independent Software & Game Developer",
+        "organization": "Self-directed",
+        "location": "Remote",
+        "timeframe": "Mar 2018 - Present",
+        "highlights": [
+          "Architected GAS gameplay systems in Unreal Engine 5, including socket-based swept-volume damage traces and equipment interfaces.",
+          "Built modular C++ UI systems for inventory, equipment, and interaction workflows.",
+          "Rewrote a Python AI assistant prototype into a C++/Qt 6 desktop application running llama.cpp and whisper.cpp locally with SQLite-backed memory.",
+          "Delivered and deployed two Azure-hosted production services: a five-platform sync orchestration console and an authorization reconciliation web app.",
+          "Designed, built, and launched a client business services site, handed over for the client to maintain themselves."
+        ]
+      }
+    ],
+    "education": [
+      "Bachelor of Science in Computer Science, completed May 2025.",
+      "Associate in Computer Science, Pensacola State College."
+    ]
   },
   "projects": [
     {
       "name": "Project Hunter",
-      "category": "Games",
+      "categories": ["Games"],
+      "theme": "games",
+      "status": ["In Development"],
+      "devlog": [],
+      "platform": "PC - Windows",
       "subtitle": "Action RPG prototype built in Unreal Engine 5",
       "role": "Gameplay Programmer / Systems Designer",
       "timeframe": "Jan 2023 - Present",
       "engine": "Unreal Engine 5",
-      "image": "img/projects/PH-thumbnail.png",
-      "thumbnail": "img/projects/PH-thumbnail.png",
-      "characterImage": "img/projects/project-hunter-character.png",
-      "characterAlt": "Project Hunter blue character render",
-      "imageAlt": "Fantasy forest environment used as Project Hunter showcase art",
+      "image": "img/projects/PH-thumbnail.webp",
+      "thumbnail": "img/projects/thumbs/PH-thumbnail.webp",
+      "heroImage": "img/projects/project-hunter-character.webp",
+      "heroAlt": "Project Hunter protagonist character render",
+      "heroStyle": "cutout",
+      "characterImage": "img/projects/project-hunter-character.webp",
+      "characterAlt": "Blue-haired Project Hunter protagonist holding a sword",
+      "imageAlt": "Project Hunter Unreal Engine gameplay debug view showing character state and resource effects",
       "summary": "A modular action RPG prototype built in UE5 around survival horror pacing, component-driven character systems, and resource-aware player pressure.",
       "details": "Built around modular gameplay logic, enemy pressure, and a player experience that rewards careful movement and resource awareness.",
       "highlights": [
-        "Custom gameplay systems built from ALS ",
-        "Action RPG gameplay",
-        "Prototype-focused iteration",
+        "Custom gameplay systems built from ALS",
         "GAS-integrated stats and combat",
-        "Active architecture refactor"
+        "Component-driven character systems",
+        "Prototype-focused iteration"
       ],
-      "tags": ["Unreal Engine", "C++", "Game Systems", "Action RPG", "Blueprints"],
+      "tags": ["Unreal Engine 5", "C++", "Gameplay Ability System", "Action RPG", "Blueprints"],
       "featured": true,
       "sortOrder": 1,
       "galleryImages": [],
       "videoUrl": "",
-      "links": []
+      "links": [
+        {
+          "label": "View Source",
+          "url": "https://github.com/MahouSenseii/ProjectHunter"
+        }
+      ],
+      "detail": {
+        "overview": "Project Hunter is a long-running Unreal Engine 5 prototype exploring how far modular, component-driven architecture can carry an action RPG. Survival horror pacing sets the tone: movement costs something, resources run out, and enemy pressure is meant to be read rather than out-clicked.",
+        "sections": [
+          {
+            "title": "Gameplay Systems",
+            "body": "Character capability is split across components rather than a monolithic pawn, so stats, combat, and traversal can be iterated independently.",
+            "items": [
+              "Custom gameplay systems built on top of ALS",
+              "GAS-integrated stats and combat resolution",
+              "Socket-based swept-volume damage traces",
+              "Modular C++ inventory, equipment, and interaction systems"
+            ]
+          },
+          {
+            "title": "Technical Direction",
+            "body": "Blueprint and C++ share the workload deliberately: systems and data live in C++, while designer-facing tuning stays in Blueprint. The project is roughly 2.5 MB of C++ across 219 commits and is currently mid-refactor as the core architecture settles.",
+            "items": []
+          }
+        ],
+        "roadmap": {
+          "implemented": [
+            "Custom gameplay systems built on top of ALS",
+            "GAS-integrated stats and combat",
+            "Component-driven character systems",
+            "Modular C++ UI for inventory and equipment"
+          ],
+          "inProgress": [
+            "Architecture refactor of core gameplay modules"
+          ],
+          "planned": []
+        }
+      }
+    },
+    {
+      "name": "R.E.V.I.A",
+      "categories": ["AI", "Apps"],
+      "theme": "ai",
+      "status": ["In Development", "Migrated to C++"],
+      "devlog": [],
+      "platform": "Windows 10+ desktop",
+      "subtitle": "Local-first desktop AI companion, migrated from Python to C++",
+      "role": "AI Systems Engineer / C++ Desktop Developer",
+      "timeframe": "2024 - Present",
+      "engine": "C++ / Qt 6",
+      "image": "img/projects/Revia.webp",
+      "thumbnail": "img/projects/thumbs/Revia.webp",
+      "heroImage": "img/projects/Revia.webp",
+      "heroAlt": "REVIA desktop assistant interface with profile and voice settings",
+      "heroStyle": "frame",
+      "characterImage": "",
+      "characterAlt": "",
+      "imageAlt": "REVIA desktop assistant interface with profile and voice settings",
+      "summary": "A local-first Windows companion written in C++ and Qt 6, with persistent memory, mood tracking, speech, and screen awareness, all running on the user's own hardware.",
+      "details": "Originally prototyped in Python, then rewritten in C++ for latency and control. Work is routed through Reflex, Fast, Main, and Expert lanes across differently-sized local models while the assistant still presents as one identity.",
+      "highlights": [
+        "Rewritten from Python into C++ and Qt 6",
+        "Local inference through llama.cpp and whisper.cpp",
+        "SQLite-backed persistent memory and mood tracking",
+        "Sandboxed filesystem and bounded UI automation"
+      ],
+      "tags": ["C++", "Qt 6", "llama.cpp", "whisper.cpp", "SQLite", "CMake", "Local LLM", "Windows"],
+      "featured": true,
+      "sortOrder": 2,
+      "galleryImages": [
+        {
+          "src": "img/projects/ReviaTheme.webp",
+          "alt": "REVIA desktop interface theme settings"
+        }
+      ],
+      "videoUrl": "",
+      "links": [
+        {
+          "label": "R.E.V.I.A (C++ Source)",
+          "url": "https://github.com/MahouSenseii/R.E.V.I.A"
+        },
+        {
+          "label": "Original Python Build",
+          "url": "https://github.com/MahouSenseii/REVIA"
+        }
+      ],
+      "detail": {
+        "overview": "R.E.V.I.A (Reactive Emotional Virtual Interactive Assistant) runs entirely on local hardware. Conversation, memory, mood, speech, and vision all stay on the machine. It began as a Python prototype with a PySide6 controller; the current build is a C++ and Qt 6.8.3 rewrite, undertaken to get latency, threading, and object lifetime under real control rather than fighting an interpreter.",
+        "sections": [
+          {
+            "title": "Architecture",
+            "body": "Work is routed through specialised lanes - Reflex, Fast, Main, and Expert - backed by several GGUF-quantised models of different sizes. The lanes share one identity and one memory store, so the specialisation is invisible from the outside: there is only ever one Revia. Built with CMake and Ninja, targeting Windows 10 1809 and later.",
+            "items": []
+          },
+          {
+            "title": "Local Model Stack",
+            "body": "Nothing leaves the machine unless the user asks it to.",
+            "items": [
+              "Conversation through local Qwen models on llama.cpp",
+              "Speech recognition via Distil-Whisper on whisper.cpp",
+              "Local text-to-speech synthesis",
+              "Persistent memory in SQLite"
+            ]
+          },
+          {
+            "title": "System Awareness and Limits",
+            "body": "The assistant can act on the machine, but every capability is deliberately bounded.",
+            "items": [
+              "Ambient screen awareness across multiple monitors",
+              "Sandboxed filesystem operations",
+              "Bounded Windows UI Automation tasks",
+              "Opt-in internet research through a visible, restricted browser"
+            ]
+          },
+          {
+            "title": "Why the Rewrite",
+            "body": "The Python build proved the product; the C++ build is about making it responsive and consistent enough to leave running all day. It is an active personal project, prioritised toward a stable personality rather than a finished consumer release.",
+            "items": []
+          }
+        ],
+        "roadmap": {
+          "implemented": [
+            "C++ / Qt 6 desktop application",
+            "Local conversation, speech recognition, and TTS",
+            "SQLite persistent memory and mood tracking",
+            "Multi-monitor screen awareness"
+          ],
+          "inProgress": [
+            "Lane routing across Reflex, Fast, Main, and Expert models",
+            "Bounded Windows UI Automation"
+          ],
+          "planned": []
+        }
+      }
+    },
+    {
+      "name": "SyncBridge",
+      "categories": ["Apps", "Web"],
+      "theme": "apps",
+      "status": ["Deployed"],
+      "platform": "Web - Azure",
+      "subtitle": "Integration orchestration console for meeting and recording workflows",
+      "role": "Full Stack Engineer / Systems Architect",
+      "timeframe": "2025 - Present",
+      "engine": "React / Node.js / Azure",
+      "image": "img/projects/syncbridge.webp",
+      "thumbnail": "img/projects/thumbs/syncbridge.webp",
+      "heroImage": "img/projects/syncbridge.webp",
+      "heroAlt": "SyncBridge admin dashboard showing integration status and platform navigation",
+      "heroStyle": "frame",
+      "characterImage": "",
+      "characterAlt": "",
+      "imageAlt": "SyncBridge admin dashboard showing integration status and platform navigation",
+      "summary": "A deployed admin console and Azure-backed orchestration service that syncs transcripts, action items, and recordings across Fireflies, Coda, Taskade, Descript, and StreamYard.",
+      "details": "Queue-backed sync control plane with a TypeScript/Express backend and React/Vite admin UI, routed through Azure Table, Queue, and Blob Storage. In production use.",
+      "highlights": [
+        "Five-platform Azure orchestration",
+        "Queue-backed sync pipeline",
+        "Dead-letter recovery and retry",
+        "Deployed and in production use"
+      ],
+      "tags": ["TypeScript", "React", "Node.js", "Azure", "REST API", "Integration", "Internal Ops"],
+      "featured": true,
+      "sortOrder": 3,
+      "galleryImages": [],
+      "videoUrl": "",
+      "links": [],
+      "detail": {
+        "overview": "SyncBridge is the control plane for a five-platform integration mesh, deployed and running in production. Transcripts, action items, and recordings move between Fireflies, Coda, Taskade, Descript, and StreamYard without anyone copying files by hand.",
+        "sections": [
+          {
+            "title": "Architecture",
+            "body": "A TypeScript/Express backend fronts a queue-backed sync pipeline, with a React/Vite admin UI on top. State, work, and payloads are split across Azure Table, Queue, and Blob Storage respectively.",
+            "items": []
+          },
+          {
+            "title": "Operator Surface",
+            "body": "The console exists so failures are recoverable by an operator rather than an engineer. That mattered more than any feature once the service was actually live.",
+            "items": [
+              "Platform setup and destination mapping",
+              "Webhook readiness checks",
+              "Dead-letter recovery and retry",
+              "Manual recording uploads"
+            ]
+          }
+        ],
+        "roadmap": {
+          "implemented": [
+            "Five-platform Azure orchestration",
+            "Queue-backed sync pipeline",
+            "Dead-letter recovery and retry",
+            "Production deployment"
+          ],
+          "inProgress": [],
+          "planned": []
+        }
+      }
+    },
+    {
+      "name": "WorkingDoc Automation",
+      "categories": ["Apps", "Web"],
+      "theme": "apps",
+      "status": ["Deployed"],
+      "platform": "Web - Azure",
+      "subtitle": "Authorization record management and reconciliation web app",
+      "role": "Full Stack Engineer / Systems Designer",
+      "timeframe": "2025 - Present",
+      "engine": "FastAPI / Azure",
+      "image": "img/projects/WorkingDoc.webp",
+      "thumbnail": "img/projects/thumbs/WorkingDoc.webp",
+      "heroImage": "img/projects/WorkingDoc.webp",
+      "heroAlt": "WorkingDoc dashboard with authorization metrics and recent batches",
+      "heroStyle": "frame",
+      "characterImage": "",
+      "characterAlt": "",
+      "imageAlt": "WorkingDoc dashboard with authorization metrics and recent batches",
+      "summary": "A deployed FastAPI web app for importing, merging, and reconciling authorization records from Excel and PDF sources into a living master working document.",
+      "details": "Built on FastAPI with Azure App Service, Azure SQL, and Blob Storage, with a rules engine for configurable business logic and Microsoft Entra ID authentication. In production use.",
+      "highlights": [
+        "Excel and PDF import with smart merge",
+        "Rules-driven fee matching and invoice generation",
+        "Azure-deployed with Entra ID auth",
+        "Deployed and in production use"
+      ],
+      "tags": ["Python", "FastAPI", "Azure", "Azure SQL", "Excel", "PDF", "Business Automation"],
+      "featured": true,
+      "sortOrder": 4,
+      "galleryImages": [],
+      "videoUrl": "",
+      "links": [],
+      "detail": {
+        "overview": "Authorization records arrive as Excel exports and PDFs and have to end up in one master working document that nobody wants to rebuild by hand. WorkingDoc imports, merges, and reconciles them while preserving the manual corrections already made. It is deployed and in daily use.",
+        "sections": [
+          {
+            "title": "Architecture",
+            "body": "FastAPI on Azure App Service, with Azure SQL for records and Blob Storage for source documents. Authentication is handled through Microsoft Entra ID.",
+            "items": []
+          },
+          {
+            "title": "Processing Pipeline",
+            "body": "The hard requirement was that automation must never silently overwrite a human's correction.",
+            "items": [
+              "Excel and PDF import",
+              "Smart merge that preserves prior manual work",
+              "Fee matching and invoice generation",
+              "Rules engine for configurable business logic"
+            ]
+          }
+        ],
+        "roadmap": {
+          "implemented": [
+            "Excel and PDF import with smart merge",
+            "Rules-driven fee matching and invoice generation",
+            "Azure deployment with Entra ID auth"
+          ],
+          "inProgress": [],
+          "planned": []
+        }
+      }
     },
     {
       "name": "First Five",
-      "category": ["Interactive Web", "Games"],
-      "subtitle": "Playable visual novel prototype",
+      "categories": ["Games", "Web"],
+      "theme": "games",
+      "status": ["Cancelled"],
+      "platform": "Web browser",
+      "subtitle": "Visual novel prototype, built from scratch on Pixi.js",
       "role": "Solo Developer",
       "timeframe": "Jan 2017 - Nov 2017",
       "engine": "Pixi.js",
       "embed": "https://pixidev.azurewebsites.net/VisualNovel/FirstFive",
-      "image": "img/projects/FFthumbnail.png",
-      "thumbnail": "img/projects/FFthumbnail.png",
-      "characterImage": "img/projects/First-FiveFML.png",
-      "imageAlt": "Playable First Five visual novel embedded preview",
-      "summary": "A dating sim / visual novel passion project built from scratch.",
-      "details": "Designed and developed the interaction flow, character conversations, levels, and playable experience around the heroine Karen.",
+      "image": "img/projects/FFthumbnail.webp",
+      "thumbnail": "img/projects/thumbs/FFthumbnail.webp",
+      "heroImage": "img/projects/First-FiveFML.webp",
+      "heroAlt": "Karen, the main character from First Five",
+      "heroStyle": "cutout",
+      "characterImage": "img/projects/First-FiveFML.webp",
+      "characterAlt": "Karen, the main character from First Five",
+      "imageAlt": "First Five visual novel scene with Karen and dialogue controls",
+      "summary": "A dating sim and visual novel built from scratch on Pixi.js. The full project was cancelled, but a playable proof of concept was completed and demonstrated, and it still runs today.",
+      "details": "Engine, dialogue flow, character conversations, levels, and all character art were made solo. Development stopped before full production, but the proof of concept shipped and remains playable in the browser.",
       "highlights": [
-        "Playable web experience",
+        "Playable proof of concept, still live",
+        "Custom visual novel engine on Pixi.js",
         "Dialogue-driven design",
-        "Solo design and development"
+        "Solo design, code, and art"
       ],
       "tags": ["Pixi.js", "JavaScript", "Visual Novel", "Interactive Story", "Web"],
-      "featured": true,
-      "sortOrder": 2,
+      "featured": false,
+      "sortOrder": 5,
       "galleryImages": [],
       "videoUrl": "",
       "links": [
         {
-          "label": "Open Project",
+          "label": "Play the Proof of Concept",
           "url": "https://pixidev.azurewebsites.net/VisualNovel/FirstFive"
         }
-      ]
+      ],
+      "detail": {
+        "overview": "First Five was a dating sim and visual novel built directly on Pixi.js with no engine underneath it. The project was ultimately cancelled before full production, but the proof of concept was finished and demonstrated, and the build is still playable in a browser today.",
+        "sections": [
+          {
+            "title": "What Was Built",
+            "body": "Everything in the proof of concept was made solo: the scene and dialogue systems, the branching conversation flow, the levels, and all of the character art.",
+            "items": [
+              "Custom scene and dialogue engine on Pixi.js",
+              "Branching conversation flow",
+              "Character art, expression sheets, and event CGs",
+              "Playable browser build"
+            ]
+          },
+          {
+            "title": "Why It Stopped",
+            "body": "Scope outgrew what one person could finish alongside other work. It stays in the portfolio because the proof of concept is real, complete, and still running - and because the character work from it is some of the art I am happiest with.",
+            "items": []
+          }
+        ],
+        "roadmap": {
+          "implemented": [
+            "Playable browser proof of concept",
+            "Dialogue and branching conversation flow",
+            "Character art and event CGs"
+          ],
+          "inProgress": [],
+          "planned": []
+        }
+      }
     },
     {
-  "name": "SyncBridge",
-  "category": "Tools & Apps",
-  "subtitle": "Integration orchestration console for meeting and recording workflows",
-  "role": "Full Stack Engineer / Systems Architect",
-  "timeframe": "2025 - Present",
-  "engine": "PyCharm",
-  "image": "img/projects/syncbridge.png",
-  "thumbnail": "img/projects/syncbridge.png",
-  "characterImage": "",
-  "characterAlt": "",
-  "imageAlt": "",
-  "summary": "An internal admin console and Azure-backed orchestration service that syncs transcripts, action items, and recordings across Fireflies, Coda, Taskade, Descript, and StreamYard.",
-  "details": "Queue-backed sync control plane with a TypeScript/Express backend and React/Vite admin UI. Covers platform setup, destination mapping, webhook readiness, dead-letter recovery, and manual recording uploads — all routed through Azure Table, Queue, and Blob Storage.",
-  "highlights": [
-    "5-platform Azure orchestration",
-    "Queue-backed sync pipeline",
-    "Dead-letter recovery and retry"
-  ],
-  "tags": ["TypeScript", "React", "Node.js", "Azure", "REST API", "Integration", "Internal Ops"],
-  "featured": true,
-  "sortOrder": 2,
-  "galleryImages": [],
-  "videoUrl": "",
-  "links": []
-},
-{
-  "name": "REVIA",
-  "category": "Tools & Apps",
-  "subtitle": "Local AI companion with voice, memory, and live integrations",
-  "role": "AI Systems Engineer / Desktop App Developer",
-  "timeframe": "2024 - Present",
-  "engine": "PyCharm",
-  "image": "img/projects/Revia.png",
-  "thumbnail": "img/projects/Revia.png",
-  "characterImage": "img/projects/vecteezy_homecoming-label_1200368.png",
-  "characterAlt": "REVIA character render",
-  "imageAlt": "img/projects/Revia.png",
-  "summary": "A locally-run AI assistant with a PySide6 desktop UI, persistent memory, real-time voice synthesis, and live Discord and Twitch integrations.",
-  "details": "Two-layer architecture: a Python core server handling inference, persona, memory, and integrations — and a PySide6 controller connected over REST and WebSocket. Memory is Redis-first with JSONL fallback. Voice runs locally via Qwen3-TTS with CUDA support. Extras include a YOLOv8 camera service and a demucs/whisper-backed sing mode.",
-  "highlights": [
-    "Local LLM with persistent memory",
-    "Real-time voice synthesis",
-    "Discord and Twitch integrations"
-  ],
-  "tags": ["Python", "PySide6", "AI", "Desktop App", "Local LLM", "vLLM", "Redis", "TTS", "Docker"],
-  "featured": true,
-  "sortOrder": 3,
-  "galleryImages": ["img/projects/Revia.png","img/projects/ReviaTheme.png"],
-  "videoUrl": "",
-  "links": []
-},
+      "name": "Portfolio Showcase",
+      "categories": ["Web", "Apps"],
+      "theme": "apps",
+      "status": ["Deployed"],
+      "platform": "Web - GitHub Pages",
+      "subtitle": "This site: a data-driven showcase engine with no framework",
+      "role": "Designer / Front-End Engineer",
+      "timeframe": "2025 - Present",
+      "engine": "Vanilla JavaScript / Webpack",
+      "image": "img/projects/portfolio-site.webp",
+      "thumbnail": "img/projects/thumbs/portfolio-site.webp",
+      "heroImage": "img/projects/portfolio-site.webp",
+      "heroAlt": "Portfolio home page showing the layered hero and the four discipline gateways",
+      "heroStyle": "frame",
+      "characterImage": "",
+      "characterAlt": "",
+      "imageAlt": "Portfolio home page showing the layered hero and the four discipline gateways",
+      "summary": "The site you are reading. A layered, selection-driven showcase built on native ES modules with no framework, where every project's presentation is described by data rather than special-cased in code.",
+      "details": "One rendering engine drives both the project and art showcases. Atmosphere, hero artwork, and layout are all resolved from fields in a single JSON file that is schema-validated in CI.",
+      "highlights": [
+        "No framework and no runtime dependencies",
+        "Data-driven presentation, no per-project code",
+        "Schema-validated content with unit tests",
+        "WCAG AA contrast and reduced-motion support"
+      ],
+      "tags": ["JavaScript", "CSS", "HTML", "Webpack", "Accessibility", "JSON Schema"],
+      "featured": false,
+      "sortOrder": 6,
+      "galleryImages": [],
+      "videoUrl": "",
+      "links": [
+        {
+          "label": "View Source",
+          "url": "https://github.com/MahouSenseii/Portfolio"
+        },
+        {
+          "label": "Live Site",
+          "url": "https://mahousenseii.github.io/Portfolio/"
+        }
+      ],
+      "detail": {
+        "overview": "Rather than a page of cards, this portfolio is a showcase: selecting a project re-composes an entire scene - atmospheric background, large foreground artwork, information, and selection UI - with a crossfade between selections. It is built on native ES modules with no framework and no runtime dependencies.",
+        "sections": [
+          {
+            "title": "Data-Driven Presentation",
+            "body": "The rendering engine contains no knowledge of any individual project. A project declares a theme, a hero image, a hero style, and optional detail content, and the shared showcase decides how to present it. Character renders are drawn as free-standing cutouts; screenshots are presented in a floating window frame. Adding a project never requires touching the renderer.",
+            "items": []
+          },
+          {
+            "title": "Architecture",
+            "body": "Responsibilities are split into focused modules rather than one large script.",
+            "items": [
+              "Showcase engine: selection state, filtering, and transitions",
+              "Ambient background: layered scene, framing, and motion",
+              "Asset resolution, theming, and shared UI fragments",
+              "Media viewer and details drawer overlays"
+            ]
+          },
+          {
+            "title": "Content and Quality",
+            "body": "All content lives in one JSON file validated against a JSON Schema, with unit tests covering category handling, URL safety, theme resolution, and deep links. Colour contrast meets WCAG AA and all motion respects prefers-reduced-motion.",
+            "items": []
+          }
+        ],
+        "roadmap": {
+          "implemented": [
+            "Data-driven project and art showcases",
+            "Schema-validated content with unit tests",
+            "Responsive desktop, tablet, and mobile compositions",
+            "GitHub Pages deployment"
+          ],
+          "inProgress": [],
+          "planned": []
+        }
+      }
+    },
     {
-  "name": "WorkingDoc Automation",
-  "category": "Tools & Apps",
-  "subtitle": "Authorization record management and reconciliation web app",
-  "role": "Full Stack Engineer / Systems Designer",
-  "timeframe": "2025 - Present",
-  "engine": "PyCharm",
-  "image": "img/projects/WorkingDoc.png",
-  "thumbnail": "img/projects/WorkingDoc.png",
-  "characterImage": "",
-  "characterAlt": "",
-  "imageAlt": "img/projects/WorkingDoc.png",
-  "summary": "A FastAPI web app for importing, merging, and reconciling authorization records from Excel and PDF sources into a living master working document.",
-  "details": "Built on FastAPI with Azure App Service, Azure SQL, and Blob Storage. Handles Excel and PDF imports, smart merge logic that preserves prior manual work, fee matching, invoice generation, and a rules engine for configurable business logic. Auth is handled via Microsoft Entra ID.",
-  "highlights": [
-    "Excel and PDF import with smart merge",
-    "Rules-driven fee matching and invoice generation",
-    "Azure-deployed with Entra ID auth"
-  ],
-  "tags": ["Python", "FastAPI", "Azure", "Excel", "PDF", "Business Automation", "REST API"],
-  "featured": true,
-  "sortOrder": 4,
-  "galleryImages": [],
-  "videoUrl": "",
-  "links": []
-}
-
+      "name": "Villar Signature Solutions",
+      "categories": ["Web"],
+      "theme": "apps",
+      "status": ["Launched"],
+      "platform": "Client marketing site",
+      "subtitle": "Client business services site, designed, built, and launched",
+      "role": "Web Designer / Site Builder",
+      "timeframe": "2026",
+      "engine": "Wix",
+      "image": "img/projects/villar-site.webp",
+      "thumbnail": "img/projects/thumbs/villar-site.webp",
+      "heroImage": "img/projects/villar-site.webp",
+      "heroAlt": "Villar Signature Solutions homepage with the Business Support hero and brand signage",
+      "heroStyle": "frame",
+      "characterImage": "",
+      "characterAlt": "",
+      "imageAlt": "Villar Signature Solutions homepage with the Business Support hero and brand signage",
+      "summary": "A live client site for Villar Signature Solutions, built and launched on Wix. Navy-and-gold brand treatment over a services offer covering operations, property and facility coordination, marketing, and bilingual support.",
+      "details": "Brand-led marketing site with a services taxonomy, FAQ, client login entry point, and a single dominant enquiry funnel. Delivered end to end and in production for the client.",
+      "highlights": [
+        "Designed, built, and launched for a real client",
+        "Navy and gold brand system carried across the site",
+        "Services taxonomy and single-funnel enquiry flow"
+      ],
+      "tags": ["Wix", "Web Design", "Marketing Site", "Client Work", "Brand System"],
+      "featured": false,
+      "sortOrder": 7,
+      "galleryImages": [],
+      "videoUrl": "",
+      "links": [
+        {
+          "label": "Live Site",
+          "url": "https://www.villarsignaturesolutions.com/"
+        },
+        {
+          "label": "Next.js Port (Source)",
+          "url": "https://github.com/MahouSenseii/villar-signature-solutions-nextjs"
+        }
+      ],
+      "detail": {
+        "overview": "Villar Signature Solutions offers operations, property and facility coordination, marketing, and bilingual support to businesses that do not want the overhead of extra full-time staff. The site had to communicate that range quickly and read as trustworthy to prospective clients, hence the restrained navy-and-gold treatment and a single dominant call to action. Built and launched on Wix, and live for the client.",
+        "sections": [
+          {
+            "title": "Delivery",
+            "body": "Designed, built, and launched on Wix, chosen so the client can keep maintaining their own copy without a developer in the loop. The brand system - navy, gold, and the VSS mark - carries through the header, the hero, and every section divider.",
+            "items": []
+          },
+          {
+            "title": "Structure",
+            "body": "",
+            "items": [
+              "Services taxonomy under a single Solutions menu",
+              "Enquiry funnel with a no-obligation review offer",
+              "Client login entry point",
+              "FAQ and about sections supporting the sales path"
+            ]
+          }
+        ],
+        "roadmap": {
+          "implemented": [
+            "Full site design, build, and launch on Wix",
+            "Brand system and page structure",
+            "Services taxonomy, FAQ, and enquiry funnel"
+          ],
+          "inProgress": [],
+          "planned": []
+        }
+      }
+    }
   ],
   "skills": [
     {
-      "category": "Game Engines",
+      "category": "Languages",
       "items": [
-        { "name": "Unreal Engine", "percent": 50, "sortOrder": 1 },
-        { "name": "Unity", "percent": 35, "sortOrder": 2 },
-        { "name": "Pixi.js", "percent": 40, "sortOrder": 3 }
+        { "name": "C++", "percent": 80, "sortOrder": 1 },
+        { "name": "Python", "percent": 72, "sortOrder": 2 },
+        { "name": "JavaScript", "percent": 62, "sortOrder": 3 },
+        { "name": "TypeScript", "percent": 58, "sortOrder": 4 },
+        { "name": "SQL", "percent": 55, "sortOrder": 5 }
       ]
     },
     {
-      "category": "Programming",
+      "category": "Game Development",
       "items": [
-        { "name": "C++", "percent": 50, "sortOrder": 1 },
-        { "name": "JavaScript", "percent": 24, "sortOrder": 2 },
-        { "name": "Python", "percent": 34, "sortOrder": 3 }
+        { "name": "Unreal Engine 5", "percent": 76, "sortOrder": 1 },
+        { "name": "Blueprint / C++ Integration", "percent": 74, "sortOrder": 2 },
+        { "name": "Gameplay Ability System", "percent": 70, "sortOrder": 3 },
+        { "name": "UMG Interface Systems", "percent": 66, "sortOrder": 4 },
+        { "name": "Animation & Locomotion", "percent": 60, "sortOrder": 5 }
       ]
     },
     {
-      "category": "Web Development",
+      "category": "AI Systems",
       "items": [
-        { "name": "HTML & CSS", "percent": 54, "sortOrder": 1 },
-        { "name": "TypeScript", "percent": 35, "sortOrder": 2 },
-        { "name": "Node.js", "percent": 45, "sortOrder": 3 },
-        { "name": "React", "percent": 40, "sortOrder": 4 }
+        { "name": "Local LLM Integration", "percent": 70, "sortOrder": 1 },
+        { "name": "Persistent Memory Design", "percent": 66, "sortOrder": 2 },
+        { "name": "Speech Recognition & TTS", "percent": 64, "sortOrder": 3 },
+        { "name": "Persona & Prompt Design", "percent": 62, "sortOrder": 4 },
+        { "name": "Computer Vision", "percent": 42, "sortOrder": 5 }
       ]
     },
     {
-      "category": "Art and Design",
+      "category": "Backend & Cloud",
       "items": [
-        { "name": "Digital Painting", "percent": 25, "sortOrder": 1 },
-        { "name": "Concept Art", "percent": 30, "sortOrder": 2 },
-        { "name": "Character Design", "percent": 45, "sortOrder": 3 },
-        { "name": "Photoshop", "percent": 35, "sortOrder": 4 },
-        { "name": "Blender", "percent": 30, "sortOrder": 5 },
-        { "name": "Clip Studio", "percent": 40, "sortOrder": 6 },
-         { "name": "MediBang", "percent": 35, "sortOrder": 7 }
+        { "name": "REST API Design", "percent": 70, "sortOrder": 1 },
+        { "name": "FastAPI", "percent": 68, "sortOrder": 2 },
+        { "name": "Azure App Service & Storage", "percent": 64, "sortOrder": 3 },
+        { "name": "Node.js & Express", "percent": 60, "sortOrder": 4 },
+        { "name": "Docker", "percent": 52, "sortOrder": 5 }
       ]
     },
     {
-      "category": "Production",
+      "category": "Interfaces & Web",
       "items": [
-        { "name": "Git and GitHub", "percent": 45, "sortOrder": 1 },
-        { "name": "Debugging", "percent": 60, "sortOrder": 2 },
-        { "name": "UI / UX Design", "percent": 54, "sortOrder": 3 },
-        { "name": "Game Profiling", "percent": 50, "sortOrder": 4 }
+        { "name": "HTML & CSS", "percent": 74, "sortOrder": 1 },
+        { "name": "Accessibility & Responsive Design", "percent": 62, "sortOrder": 2 },
+        { "name": "Qt 6", "percent": 58, "sortOrder": 3 },
+        { "name": "React", "percent": 58, "sortOrder": 4 },
+        { "name": "Next.js", "percent": 50, "sortOrder": 5 }
+      ]
+    },
+    {
+      "category": "Art & Illustration",
+      "items": [
+        { "name": "Character Illustration", "percent": 74, "sortOrder": 1 },
+        { "name": "Clip Studio Paint", "percent": 70, "sortOrder": 2 },
+        { "name": "Environment & Background Art", "percent": 70, "sortOrder": 3 },
+        { "name": "Colour & Lighting", "percent": 64, "sortOrder": 4 },
+        { "name": "Photoshop", "percent": 55, "sortOrder": 5 },
+        { "name": "Blender", "percent": 38, "sortOrder": 6 }
+      ]
+    },
+    {
+      "category": "Engineering Practice",
+      "items": [
+        { "name": "Systems Architecture", "percent": 70, "sortOrder": 1 },
+        { "name": "Debugging & Profiling", "percent": 68, "sortOrder": 2 },
+        { "name": "Git & GitHub", "percent": 68, "sortOrder": 3 },
+        { "name": "CMake & Build Tooling", "percent": 58, "sortOrder": 4 },
+        { "name": "Automated Testing", "percent": 52, "sortOrder": 5 }
       ]
     }
   ],
   "art": [
     {
       "title": "Beach",
-      "category": "Digital Art",
+      "categories": ["Environment Art", "Digital Art"],
       "year": "2024",
-      "src": "img/beach.jpg",
-      "alt": "Digital beach artwork by Quentin F. Davis",
-      "description": "A digital painting study exploring light, atmosphere, and color harmony in a coastal setting.",
+      "src": "img/beach.webp",
+      "thumbnail": "img/art/thumbs/beach.webp",
+      "alt": "Anime-style beach scene with a silver-haired character holding a beach ball",
+      "description": "Full illustration: character, water effects, and background cast in one composition. A study in light, atmosphere, and colour harmony.",
       "relatedProject": "",
+      "featured": true,
       "sortOrder": 1
     },
     {
-      "title": "Karen poses lineup",
-      "category": ["Character Art", "Visual Novel Scene"],
+      "title": "Night Kitchen",
+      "categories": ["Environment Art", "Digital Art"],
       "year": "2024",
-      "src": "img/art/vn-character-lineup.png",
-      "alt": "Three expression poses for Karen the female lead of First Five visual novel",
-      "description": "Expression and pose lineup for a visual novel character.",
-      "relatedProject": "First Five",
+      "src": "img/art/illustration-9.webp",
+      "thumbnail": "img/art/thumbs/illustration-9.webp",
+      "alt": "Nighttime kitchen interior with moonlight through the window",
+      "description": "Background painting built for storytelling: one-point perspective, moonlight as the only key light, and prop detail that implies the people who live here.",
+      "relatedProject": "",
+      "featured": true,
       "sortOrder": 2
     },
-
+    {
+      "title": "Karen Poses Lineup",
+      "categories": ["Character Art", "Visual Novel Scene"],
+      "year": "2024",
+      "src": "img/art/vn-character-lineup.webp",
+      "thumbnail": "img/art/thumbs/vn-character-lineup.webp",
+      "alt": "Three expression poses for Karen the female lead of First Five visual novel",
+      "description": "Production expression and pose sheet for the First Five lead, drawn for real use in the visual novel's scene system.",
+      "relatedProject": "First Five",
+      "sortOrder": 3
+    },
     {
       "title": "Good End Scene",
-      "category": ["Visual Novel Scene", "Digital Art"],
+      "categories": ["Visual Novel Scene", "Digital Art"],
       "year": "2024",
-      "src": "img/art/good-end-scene.png",
+      "src": "img/art/good-end-scene.webp",
+      "thumbnail": "img/art/thumbs/good-end-scene.webp",
       "alt": "Visual novel good ending scene for First Five",
-      "description": "Narrative scene illustration for a First Five good ending.",
+      "description": "Event CG for a First Five ending: backlit window, rim lighting on both characters, and in-engine title treatment.",
       "relatedProject": "First Five",
       "sortOrder": 4
     },
     {
-      "title": "Manga Style Cover",
-      "category": "Character Art",
+      "title": "Dark Horizon Cover",
+      "categories": ["Character Art", "Cover Art"],
       "year": "2024",
-      "src": "img/art/co-low-character.png",
-      "alt": "Dark Horizon cover",
-      "description": "Dark Horizon cover.",
+      "src": "img/art/co-low-character.webp",
+      "thumbnail": "img/art/thumbs/co-low-character.webp",
+      "alt": "Dark Horizon manga-style character cover",
+      "description": "Cover illustration with vertical title typography, silhouette-first character staging, and a fire-lit background.",
+      "relatedProject": "",
+      "sortOrder": 5
+    },
+    {
+      "title": "Hallway Colour Study",
+      "categories": ["Colorist", "Environment Art"],
+      "year": "2024",
+      "src": "img/art/colorist-study-2.webp",
+      "thumbnail": "img/art/thumbs/colorist-study-2.webp",
+      "alt": "Green and blue colour study of framed portraits in a hallway",
+      "description": "Two-pass colour experiment over a hallway layout, testing how far a scene can be pushed on hue alone before form breaks down.",
       "relatedProject": "",
       "sortOrder": 6
     },
     {
-      "title": "Background Illustration ",
-      "category": "Environment Art",
+      "title": "Stylized Portrait",
+      "categories": ["Character Art", "Digital Art"],
       "year": "2024",
-      "src": "img/art/illustration-9.jpg",
-      "alt": "Blue and green framed-room illustration",
-      "description": "Atmospheric room and lighting illustration.",
+      "src": "img/art/mahou-sensei-portrait.webp",
+      "thumbnail": "img/art/thumbs/mahou-sensei-portrait.webp",
+      "alt": "Green-lit illustrated portrait of a person with glasses",
+      "description": "Signed self-portrait in flat two-tone, drawn as a profile avatar.",
       "relatedProject": "",
       "sortOrder": 7
     },
     {
-      "title": "Colorist 1",
-      "category": "Colorist",
+      "title": "Grand Hall Colour Key",
+      "categories": ["Colorist", "Environment Art"],
       "year": "2024",
-      "src": "img/art/colorist-study-2.png",
-      "alt": "Blue interior hallway scene with chandelier lighting",
-      "description": "Interior lighting and color for short animation.",
+      "src": "img/art/colorist-study.webp",
+      "thumbnail": "img/art/thumbs/colorist-study.webp",
+      "alt": "Blue-lit grand hallway with tall windows and a chandelier",
+      "description": "Interior colour key for a short animation: cool moonlight through the windows against warm practical light from the chandelier.",
       "relatedProject": "",
       "sortOrder": 8
-    },
-    {
-      "title": "Colorist 2",
-      "category": "Colorist",
-      "year": "2024",
-      "src": "img/art/colorist-study.png",
-      "alt": "Green-lit hallway",
-      "description": "Interior lighting and color for short animation.",
-      "relatedProject": "",
-      "sortOrder": 9
-    },
-    {
-      "title": "Stylized Portrait",
-      "category": "Character Art",
-      "year": "2024",
-      "src": "img/art/mahou-sensei-portrait.jpg",
-      "alt": "Portrait illustration signed MahouSensei",
-      "description": "Signed character portrait illustration.",
-      "relatedProject": "",
-      "sortOrder": 10
     }
   ],
   "music": [

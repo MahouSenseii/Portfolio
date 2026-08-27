@@ -1,56 +1,55 @@
-<section id="contact" class="page-section">
-  <div class="contact-container">
+<section id="contact" class="page-section content-page">
+  <div class="page-shell">
     <h1 class="section-title">Contact Me</h1>
 
-    <div class="contact-panel">
-      <div class="contact-info">
-        <p id="contact-availability"></p>
+    <div class="contact-layout">
+      <div class="page-lede">
+        <p id="contact-availability" class="contact-availability"></p>
 
         <div class="contact-methods">
           <p>
-            <strong>Email:</strong>
+            <strong>Email</strong>
             <a id="contact-email-link" href="#"><span id="contact-email-text"></span></a>
           </p>
           <p>
-            <strong>Location:</strong>
+            <strong>Location</strong>
             <span id="contact-location"></span>
           </p>
         </div>
 
-        <div class="contact-socials social-icons">
+        <div class="button-row">
+          <button id="copy-email" class="btn btn--small" type="button">Copy Email</button>
+        </div>
+        <p id="copy-email-status" class="visually-hidden" aria-live="polite"></p>
+
+        <div class="social-icons contact-socials">
           <a id="contact-github" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <img src="img/github.png" alt="">
+            <img src="img/github.webp" alt="">
           </a>
           <a id="contact-linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <img src="img/linkedin.png" alt="">
-          </a>
-          <a id="contact-discord" href="#" target="_blank" rel="noopener noreferrer" aria-label="Discord" hidden>
-            <img data-src="img/discord.png" alt="">
-          </a>
-          <a id="contact-itch" href="#" target="_blank" rel="noopener noreferrer" aria-label="Itch.io" hidden>
-            <img data-src="img/itch.png" alt="">
+            <img src="img/linkedin.webp" alt="">
           </a>
         </div>
       </div>
 
-      <form id="contact-form" class="contact-form">
+      <form id="contact-form" class="contact-form panel">
         <label>
           Name
-          <input type="text" name="name" autocomplete="name">
+          <input type="text" name="name" autocomplete="name" required>
         </label>
         <label>
           Reply Email
-          <input type="email" name="email" autocomplete="email">
+          <input type="email" name="email" autocomplete="email" required>
         </label>
-        <label>
+        <label class="contact-form-wide">
           Subject
           <input type="text" name="subject" value="Portfolio Job Opportunity">
         </label>
-        <label>
+        <label class="contact-form-wide">
           Message
           <textarea name="message" required></textarea>
         </label>
-        <button class="primary-button" type="submit">Send Email</button>
+        <button class="btn btn--primary" type="submit">Open Email Draft</button>
       </form>
     </div>
   </div>

@@ -5,9 +5,13 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
+  performance: {
+    assetFilter: filename => !filename.endsWith('.mp3'),
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+      inject: false,
     }),
     new CopyPlugin({
       patterns: [

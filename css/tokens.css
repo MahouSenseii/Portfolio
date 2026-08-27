@@ -1,0 +1,117 @@
+/* Design tokens: palette, type, motion, and the four category atmospheres. */
+
+@font-face {
+  font-family: 'Cinzel Decorative';
+  src: url('../fonts/Cinzel_Decorative/CinzelDecorative-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Eagle Lake';
+  src: url('../fonts/Eagle_Lake/EagleLake-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  /* Type */
+  --font-display: 'Cinzel Decorative', 'Iowan Old Style', Georgia, serif;
+  --font-label: 'Eagle Lake', Georgia, serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Ground: ivory, cream, pale gray-blue */
+  --paper: #fbf8f1;
+  --paper-soft: #f4efe4;
+  --mist: #e7eef5;
+  --sky: #d3e3f1;
+  --sky-deep: #6f9ec5;
+
+  /* Ink: navy reserved for text and deep contrast */
+  --ink: #16243a;
+  --ink-soft: #3e526e;
+  --ink-faint: #5d7188;
+
+  /* Metals */
+  --gold-deep: #8a6a18;
+  --gold: #b8912f;
+  --gold-bright: #e0bb63;
+  --gold-pale: #f1e4c1;
+  --teal: #46908a;
+
+  /* Theme-driven, overridden per atmosphere */
+  --accent: #4f86b8;
+  --accent-2: #7fb2d8;
+  --atmos-1: #f7f4ec;
+  --atmos-2: #dde8f2;
+  --atmos-3: #cbdae8;
+  --scene-veil: 0.34;
+  --scene-blur: 16px;
+
+  /* Lines and surfaces */
+  --line: rgba(22, 36, 58, 0.13);
+  --line-strong: rgba(22, 36, 58, 0.26);
+  --gold-line: rgba(184, 145, 47, 0.44);
+  --glass: rgba(255, 255, 255, 0.58);
+  --glass-strong: rgba(255, 255, 255, 0.84);
+
+  --shadow-soft: 0 16px 40px rgba(22, 36, 58, 0.1);
+  --shadow-lift: 0 30px 72px rgba(22, 36, 58, 0.2);
+  --shadow-art: 0 40px 70px rgba(22, 36, 58, 0.28);
+
+  --focus: #1f628f;
+  --radius: 10px;
+  --radius-sm: 6px;
+
+  --nav-height: 74px;
+  --content-width: 1180px;
+  --selector-height: 138px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur: 420ms;
+  --dur-slow: 720ms;
+}
+
+/* --- Category atmospheres --------------------------------------------
+   Variations of one system. Each shifts accent and ground only; every
+   structural rule below stays shared. */
+
+[data-theme='apps'] {
+  --accent: #3f7fb4;
+  --accent-2: #86b6d8;
+  --atmos-1: #f8f6f0;
+  --atmos-2: #dfeaf4;
+  --atmos-3: #c9dae9;
+  --scene-veil: 0.3;
+  --scene-blur: 18px;
+}
+
+[data-theme='ai'] {
+  --accent: #5580c9;
+  --accent-2: #9b8fd6;
+  --atmos-1: #f6f5fb;
+  --atmos-2: #dbe5f8;
+  --atmos-3: #d9d4ee;
+  --scene-veil: 0.32;
+  --scene-blur: 20px;
+}
+
+[data-theme='games'] {
+  --accent: #a9822b;
+  --accent-2: #c8a35a;
+  --atmos-1: #f8f2e6;
+  --atmos-2: #e7d9bd;
+  --atmos-3: #d3ccba;
+  --scene-veil: 0.52;
+  --scene-blur: 10px;
+}
+
+[data-theme='art'] {
+  --accent: #7f8fa8;
+  --accent-2: #b9a7ac;
+  --atmos-1: #f8f6f2;
+  --atmos-2: #eae6de;
+  --atmos-3: #ded9d2;
+  --scene-veil: 0.4;
+  --scene-blur: 26px;
+}
