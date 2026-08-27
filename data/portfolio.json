@@ -8,6 +8,8 @@
       "Artist"
     ],
     "tagline": "I build gameplay systems, AI companions, and production software, then draw the worlds they live in.",
+    "backgroundVideo": "video/HomePlaceholderVid.mp4",
+    "backgroundVideoRotate": 90,
     "about": [
       "I am a software engineer who works in C++ first and has spent the last several years building things that have to run, not just demo. Two of my systems are deployed and in daily use: SyncBridge, an Azure-backed orchestration service that keeps five meeting and recording platforms in sync, and WorkingDoc Automation, a FastAPI app that imports, merges, and reconciles authorization records without destroying the manual corrections people have already made.",
       "The other half of my work is real-time. Project Hunter is an Unreal Engine 5 action RPG built on the Gameplay Ability System, where character capability lives in components rather than one enormous pawn so combat, stats, and traversal can be iterated separately. REVIA is a local-first desktop AI companion I originally prototyped in Python and then rewrote in C++ with Qt 6, running llama.cpp and whisper.cpp on the user's own hardware with SQLite-backed memory. Rewriting it taught me more about latency, threading, and lifetime management than any tutorial project would have.",

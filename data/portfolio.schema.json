@@ -14,7 +14,9 @@
         "roles": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
         "tagline": { "type": "string", "minLength": 1 },
         "about": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
-        "disciplines": { "type": "array", "items": { "$ref": "#/definitions/discipline" } }
+        "disciplines": { "type": "array", "items": { "$ref": "#/definitions/discipline" } },
+        "backgroundVideo": { "$ref": "#/definitions/sceneVideo" },
+        "backgroundVideoRotate": { "$ref": "#/definitions/sceneVideoRotate" }
       }
     },
     "filters": {
@@ -101,7 +103,15 @@
     "localPath": {
       "type": "string",
       "minLength": 1,
-      "pattern": "^(img|music|documents)/"
+      "pattern": "^(img|music|documents|video)/"
+    },
+    "sceneVideo": {
+      "description": "Optional moving backdrop, faded behind the scene.",
+      "oneOf": [{ "const": "" }, { "type": "string", "pattern": "^video/" }]
+    },
+    "sceneVideoRotate": {
+      "description": "Quarter turn for footage stored in the wrong orientation.",
+      "enum": [0, 90, 180, 270]
     },
     "categories": {
       "type": "array",
@@ -226,6 +236,8 @@
         "heroAlt": { "type": "string" },
         "heroStyle": { "enum": ["cutout", "frame"] },
         "backgroundImage": { "oneOf": [{ "const": "" }, { "$ref": "#/definitions/localPath" }] },
+        "backgroundVideo": { "$ref": "#/definitions/sceneVideo" },
+        "backgroundVideoRotate": { "$ref": "#/definitions/sceneVideoRotate" },
         "detail": { "$ref": "#/definitions/detail" },
         "subtitle": { "type": "string", "minLength": 1 },
         "role": { "type": "string", "minLength": 1 },

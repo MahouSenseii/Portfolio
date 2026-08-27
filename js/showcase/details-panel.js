@@ -154,7 +154,7 @@ export function buildProjectDetails(project, { mediaViewer, fallbackCategory = '
   const actions = element('div', 'detail-actions button-row');
   renderActions(actions, [
     embed && {
-      label: project.embed ? 'Play Demo' : 'Watch Video',
+      label: project.embed ? 'Play Demo' : 'Watch video',
       variant: 'primary',
       onClick: () => mediaViewer.openEmbed(embed, `${project.name} demo`),
     },

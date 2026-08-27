@@ -41,6 +41,14 @@ engine decides the presentation. Never special-case a project by name in CSS or 
 | `status` / `platform` | Level-4 detail shown as a badge and in the kicker. |
 | `detail` | Content for the expanded details drawer: `overview`, `sections[]`, and a `roadmap` of `implemented` / `inProgress` / `planned`. |
 | `devlog` | Dated development entries. Adds a "Dev Log" button that opens the drawer. See below. |
+| `backgroundVideo` | Optional moving backdrop under `video/`, faded behind the scene like the still image. |
+| `backgroundVideoRotate` | `0`, `90`, `180` or `270`, for footage stored in the wrong orientation. |
+
+`profile` accepts the same two fields for the home scene. Ambient video is
+decorative: it is skipped entirely under `prefers-reduced-motion`, on metered
+connections (`saveData`), and on 2G, and the still image stays underneath in
+every case. Encode clips small - they render blurred and semi-transparent, so
+720p at a low bitrate with the audio stripped is plenty.
 
 `status` takes one label or several: `"Deployed"` or `["In Development", "Migrated to C++"]`.
 The badge colour is chosen from the wording, so new labels work without a code change:

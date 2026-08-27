@@ -21,6 +21,7 @@ module.exports = merge(common, {
         { from: 'documents', to: 'documents' },
         { from: 'fonts', to: 'fonts' },
         { from: 'music', to: 'music' },
+        { from: 'video', to: 'video' },
         { from: 'pages', to: 'pages' },
         { from: 'nav.html', to: 'nav.html' },
         { from: 'footer.html', to: 'footer.html' },

@@ -6,7 +6,7 @@ import {
   sortByOrder,
 } from '../utils.js';
 import { createAmbientBackground } from '../showcase/ambient.js';
-import { collectGallery, resolveHero, resolveScene } from '../showcase/assets.js';
+import { collectGallery, resolveHero, resolveScene, resolveSceneVideo } from '../showcase/assets.js';
 import { buildProjectDetails } from '../showcase/details-panel.js';
 import { buildDevlog, getDevlogEntries } from '../showcase/devlog.js';
 import { createDrawer } from '../showcase/drawer.js';
@@ -104,7 +104,7 @@ export function initProjects(data, params) {
         onClick: () => openDevlog(project),
       },
       embed && {
-        label: project.embed ? 'Play Demo' : 'Watch Video',
+        label: project.embed ? 'Play Demo' : 'Watch video',
         onClick: () => mediaViewer.openEmbed(embed, `${project.name} demo`),
       },
       gallery.length && {
@@ -129,6 +129,9 @@ export function initProjects(data, params) {
 
     applyTheme(root, project, 'apps');
     ambient.setScene(resolveScene(project, FALLBACK_SCENE));
+
+    const video = resolveSceneVideo(project);
+    ambient.setVideo(video.src, video.rotate);
 
     if (view.watermark) view.watermark.textContent = project.name;
 

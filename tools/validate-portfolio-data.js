@@ -40,6 +40,7 @@ assertFilterCoverage(data.filters && data.filters.art, data.art, 'art');
 data.skills.forEach((group) => assertUniqueOrder(group.items, `skills.${group.category}`));
 
 assertFile(data.resume.url, 'resume');
+assertFile(data.profile.backgroundVideo, 'profile.backgroundVideo');
 data.music.forEach((song) => assertFile(song.src, `music.${song.name}`));
 data.projects.forEach((project) => {
   assertFile(project.image, `projects.${project.name}.image`);
@@ -47,6 +48,7 @@ data.projects.forEach((project) => {
   assertFile(project.characterImage, `projects.${project.name}.characterImage`);
   assertFile(project.heroImage, `projects.${project.name}.heroImage`);
   assertFile(project.backgroundImage, `projects.${project.name}.backgroundImage`);
+  assertFile(project.backgroundVideo, `projects.${project.name}.backgroundVideo`);
   project.galleryImages.forEach((image) => {
     assertFile(typeof image === 'string' ? image : image.src, `projects.${project.name}.galleryImages`);
   });

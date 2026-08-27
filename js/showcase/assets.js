@@ -25,6 +25,17 @@ export function resolveScene(item, fallback = '') {
   return item?.backgroundImage || item?.image || item?.src || fallback;
 }
 
+/**
+ * Optional moving backdrop. `rotate` is a quarter turn in degrees, for
+ * footage stored in an orientation the browser will not correct itself.
+ */
+export function resolveSceneVideo(item) {
+  return {
+    src: item?.backgroundVideo || '',
+    rotate: Number(item?.backgroundVideoRotate) || 0,
+  };
+}
+
 /** Every image worth putting in the media viewer, deduplicated. */
 export function collectGallery(item) {
   const entries = [

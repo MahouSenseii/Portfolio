@@ -155,3 +155,20 @@ test('every project declares a dev log array or none at all', () => {
     }
   });
 });
+
+test('scene video is resolved from data with a normalised quarter turn', async () => {
+  const { resolveSceneVideo } = await importModule('js/showcase/assets.js');
+
+  assert.deepEqual(resolveSceneVideo({}), { src: '', rotate: 0 }, 'no video by default');
+  assert.deepEqual(
+    resolveSceneVideo({ backgroundVideo: 'video/clip.mp4', backgroundVideoRotate: 90 }),
+    { src: 'video/clip.mp4', rotate: 90 },
+  );
+  assert.equal(resolveSceneVideo({ backgroundVideo: 'video/clip.mp4' }).rotate, 0, 'rotation is optional');
+
+  const home = data.profile;
+  if (home.backgroundVideo) {
+    assert.match(home.backgroundVideo, /^video\//, 'scene video lives under video/');
+    assert.ok([0, 90, 180, 270].includes(home.backgroundVideoRotate ?? 0), 'rotation is a quarter turn');
+  }
+});

@@ -24,6 +24,19 @@ const CORNER_ORNAMENT = `
   <rect x="17.5" y="17.5" width="8" height="8" fill="currentColor" stroke="none" transform="rotate(45 21.5 21.5)"/>
 </svg>`;
 
+/**
+ * Ambient video is decorative, so it is skipped whenever motion is
+ * unwelcome or the connection is metered or slow. The still image layer
+ * stays underneath, so the scene always looks right without it.
+ */
+function canPlayAmbientVideo() {
+  if (prefersReducedMotion()) return false;
+
+  const connection = navigator.connection;
+  if (!connection) return true;
+  return !connection.saveData && !/(^|-)2g$/.test(connection.effectiveType || '');
+}
+
 /** Percent-encodes the characters that could break out of a CSS url() token. */
 export function cssUrl(path) {
   if (!path) return '';
@@ -63,7 +76,7 @@ function buildMotes(container, count) {
  * @param {{ motes?: number, ornaments?: boolean }} options
  */
 export function createAmbientBackground(root, { motes = 18, ornaments = true } = {}) {
-  if (!root) return { setScene() {}, destroy() {} };
+  if (!root) return { setScene() {}, setVideo() {}, destroy() {} };
 
   const atmosphere = document.createElement('div');
   atmosphere.className = 'sc-atmosphere';
@@ -102,6 +115,26 @@ export function createAmbientBackground(root, { motes = 18, ornaments = true } =
 
   let front = 0;
   let currentSource = '';
+  let videoLayer = null;
+  let currentVideo = '';
+
+  function buildVideoLayer() {
+    const layer = document.createElement('div');
+    layer.className = 'sc-scene-video';
+    layer.setAttribute('aria-hidden', 'true');
+
+    const video = document.createElement('video');
+    video.muted = true;
+    video.loop = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.tabIndex = -1;
+
+    layer.appendChild(video);
+    wash.before(layer);
+    return layer;
+  }
 
   return {
     /** Crossfades the atmospheric image. Repeated calls with the same source are ignored. */
@@ -118,7 +151,39 @@ export function createAmbientBackground(root, { motes = 18, ornaments = true } =
       front ^= 1;
     },
 
+    /**
+     * Optional moving backdrop over the still scene. `rotate` is a quarter
+     * turn in degrees for footage stored in the wrong orientation.
+     */
+    setVideo(source, rotate = 0) {
+      if (source === currentVideo) return;
+      currentVideo = source;
+
+      if (!source || !canPlayAmbientVideo()) {
+        videoLayer?.classList.remove('is-active');
+        videoLayer?.querySelector('video')?.pause();
+        return;
+      }
+
+      if (!videoLayer) videoLayer = buildVideoLayer();
+
+      const turn = ((Math.round(Number(rotate) / 90) * 90) % 360 + 360) % 360;
+      videoLayer.dataset.rotate = String(turn);
+      videoLayer.style.setProperty('--scene-rotate', `${turn}deg`);
+
+      const video = videoLayer.querySelector('video');
+      video.src = source;
+      video.play().catch(() => {});
+      videoLayer.classList.add('is-active');
+    },
+
     destroy() {
+      const video = videoLayer?.querySelector('video');
+      if (video) {
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+      }
       atmosphere.remove();
       ornamentLayer?.remove();
       particleLayer?.remove();

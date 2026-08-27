@@ -45,6 +45,41 @@
   opacity: var(--scene-veil);
 }
 
+/* Moving backdrop. Sits over the still scene and under the wash, so it
+   gets the same faded treatment as the image it replaces. */
+.sc-scene-video {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease);
+  container-type: size;
+}
+
+.sc-scene-video.is-active {
+  opacity: var(--scene-veil);
+}
+
+.sc-scene-video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  filter: blur(var(--scene-blur)) saturate(0.7) brightness(1.22);
+  object-fit: cover;
+  /* Scaled up so the blur never reveals the edge of the frame. */
+  transform: translate(-50%, -50%) rotate(var(--scene-rotate, 0deg)) scale(1.1);
+}
+
+/* A quarter turn swaps the axes, so the box has to swap too or the
+   rotated frame no longer covers the scene. */
+.sc-scene-video[data-rotate='90'] video,
+.sc-scene-video[data-rotate='270'] video {
+  width: 100cqh;
+  height: 100cqw;
+}
+
 .sc-wash {
   position: absolute;
   inset: 0;

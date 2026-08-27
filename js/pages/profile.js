@@ -1,5 +1,6 @@
 import { setHref, setText } from '../utils.js';
 import { createAmbientBackground } from '../showcase/ambient.js';
+import { resolveSceneVideo } from '../showcase/assets.js';
 
 const HOME_SCENE = 'img/bghome.webp';
 
@@ -46,6 +47,9 @@ export function initHome(data) {
 
   const ambient = createAmbientBackground(home, { motes: 26, ornaments: false });
   ambient.setScene(HOME_SCENE);
+
+  const video = resolveSceneVideo(profile);
+  ambient.setVideo(video.src, video.rotate);
 
   return () => ambient.destroy();
 }
