@@ -1,0 +1,38 @@
+.revia-page { max-width: var(--content-width); margin: 0 auto; padding: calc(var(--nav-height) + clamp(24px, 4vw, 56px)) 24px 56px; color: var(--ink); }
+.revia-intro { display: grid; grid-template-columns: 1.25fr 1fr; gap: 36px; align-items: center; margin-bottom: 36px; }
+.revia-page h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); margin: 8px 0 20px; line-height: 1.2; }
+.revia-page h2 { font-size: 1.25rem; margin: 8px 0 12px; }
+.revia-page p { line-height: 1.65; }
+.revia-eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; font-weight: 700; color: var(--ink-soft); }
+.revia-lead { font-size: 1.15rem; }
+.revia-intro figure { margin: 0; }
+.revia-intro img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--gold-line); box-shadow: var(--shadow-soft); }
+.revia-intro figcaption { color: var(--ink-soft); font-size: .8rem; margin-top: 10px; }
+.revia-links { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 20px; }
+.revia-page a { color: #215a85; text-decoration: underline; text-underline-offset: 3px; }
+.revia-workspace { display: grid; grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); gap: 24px; align-items: start; }
+.revia-panel { background: var(--paper); border: 1px solid var(--line-strong); border-radius: var(--radius); box-shadow: var(--shadow-soft); padding: 24px; min-width: 0; }
+.revia-session { background: linear-gradient(145deg, var(--atmos-1), var(--mist)); }
+.revia-session form { margin: 24px 0 16px; }
+.revia-page label { display: block; font-weight: 600; margin-bottom: 8px; }
+.revia-page input, .revia-page textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: 1rem; color: var(--ink); background: white; border: 1px solid var(--ink-faint); padding: 12px; border-radius: var(--radius-sm); }
+.revia-page textarea { resize: vertical; min-height: 108px; max-height: 320px; }
+.revia-page :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.revia-page button { min-height: 44px; white-space: normal; }
+.revia-page button:disabled { opacity: .6; cursor: not-allowed; }
+.revia-page [hidden] { display: none !important; }
+.revia-hint { font-size: .8rem; color: var(--ink-soft); }
+.revia-chat-heading, .revia-input-meta { display: flex; gap: 12px; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+.revia-chat-heading > span { font-size: .75rem; border: 1px solid var(--gold-line); border-radius: 20px; padding: 4px 10px; white-space: nowrap; }
+.revia-chat [data-progress] { color: var(--ink-soft); min-height: 1.65em; margin-top: 0; }
+.revia-transcript { background: white; border: 1px solid var(--line); border-radius: var(--radius-sm); min-height: 220px; max-height: 480px; overflow: auto; padding: 16px; margin: 16px 0 20px; overflow-wrap: anywhere; }
+.revia-empty { color: var(--ink-soft); }
+.revia-message { padding: 12px 14px; background: var(--mist); border-radius: var(--radius-sm); margin: 0 0 12px; }
+.revia-message[data-speaker='Revia'] { background: var(--paper-soft); border-left: 3px solid var(--gold); }
+.revia-message strong { font-size: .8rem; }
+.revia-message p { white-space: pre-wrap; margin: 6px 0 0; }
+.revia-controls { display: flex; flex-wrap: wrap; gap: 10px; }
+.revia-input-meta p { margin: 8px 0 14px; }
+.revia-privacy { margin-top: 32px; padding: 24px; border-top: 1px solid var(--gold-line); color: var(--ink-soft); font-size: .9rem; }
+@media (max-width: 760px) { .revia-intro, .revia-workspace { grid-template-columns: 1fr; } .revia-page { padding: calc(var(--nav-height) + 24px) 16px 24px; } .revia-panel { padding: 18px; } .revia-intro figure { max-width: 520px; } }
+@media (prefers-reduced-motion: reduce) { .revia-page *, .revia-page *::before, .revia-page *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

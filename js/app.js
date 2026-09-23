@@ -8,6 +8,7 @@ import { initProjects } from './pages/projects.js';
 import { initArt } from './pages/art.js';
 import { initKnowledge } from './pages/knowledge.js';
 import { initContact } from './pages/contact.js';
+import { initRevia } from './pages/revia.js';
 
 const pages = {
   'home.html': initHome,
@@ -17,6 +18,7 @@ const pages = {
   'knowledge.html': initKnowledge,
   'resume.html': initResume,
   'contact.html': initContact,
+  'revia.html': initRevia,
 };
 
 async function start() {

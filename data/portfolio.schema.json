@@ -219,6 +219,7 @@
       "additionalProperties": false,
       "required": ["name", "categories", "subtitle", "role", "timeframe", "engine", "image", "thumbnail", "characterImage", "characterAlt", "imageAlt", "summary", "details", "highlights", "tags", "featured", "sortOrder", "galleryImages", "videoUrl", "links"],
       "properties": {
+        "demoRoute": { "const": "#revia.html" },
         "name": { "type": "string", "minLength": 1 },
         "categories": { "$ref": "#/definitions/categories" },
         "theme": { "$ref": "#/definitions/theme" },

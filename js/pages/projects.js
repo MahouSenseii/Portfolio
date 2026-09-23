@@ -3,6 +3,7 @@ import {
   getCategories,
   getVideoEmbedUrl,
   safeHttpUrl,
+  safeInternalRoute,
   sortByOrder,
 } from '../utils.js';
 import { createAmbientBackground } from '../showcase/ambient.js';
@@ -94,6 +95,11 @@ export function initProjects(data, params) {
     const devlogEntries = getDevlogEntries(project);
 
     const actions = [
+      safeInternalRoute(project.demoRoute) && {
+        label: 'Talk to Revia',
+        variant: 'primary',
+        href: safeInternalRoute(project.demoRoute),
+      },
       {
         label: 'Explore Project',
         variant: 'primary',

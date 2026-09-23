@@ -1,0 +1,59 @@
+<section class="revia-page" data-theme="ai">
+  <header class="revia-intro">
+    <div>
+      <p class="revia-eyebrow">R.E.V.I.A / Public text demo</p>
+      <h1>Talk to Revia</h1>
+      <p class="revia-lead">One character. Local inference. A small window into a personal AI project.</p>
+      <p>Revia is a C++ desktop companion running on the developer’s Windows computer. When the optional guest service is enabled, this page offers a separate, temporary text conversation using the same character and local model stack.</p>
+      <div class="revia-links">
+        <a href="https://github.com/MahouSenseii/R.E.V.I.A" target="_blank" rel="noopener noreferrer">Current C++ source</a>
+        <a href="https://github.com/MahouSenseii/R.E.V.I.A/tree/main/Tools/Presence/WebDemo" target="_blank" rel="noopener noreferrer">Architecture &amp; operation</a>
+        <a href="#projects.html?category=AI">Explore the project</a>
+      </div>
+    </div>
+    <figure>
+      <img src="img/projects/Revia.webp" alt="Revia’s desktop interface with profile and voice settings" width="640" height="420">
+      <figcaption>The desktop project. This browser demo is text only.</figcaption>
+    </figure>
+  </header>
+  <div class="revia-workspace">
+    <aside class="revia-panel revia-session" aria-labelledby="revia-session-title">
+      <p class="revia-eyebrow">Live availability</p>
+      <h2 id="revia-session-title" data-availability>Checking configuration</h2>
+      <p data-availability-detail>The portfolio is always available; live conversation depends on the developer’s computer.</p>
+      <button class="btn" type="button" data-refresh disabled>Check availability</button>
+      <form data-session-form>
+        <label for="revia-invite">Invitation code</label>
+        <input id="revia-invite" name="invite" type="password" maxlength="256" autocomplete="off" spellcheck="false" aria-describedby="revia-invite-help" disabled>
+        <p id="revia-invite-help" class="revia-hint">The first release is invite-only. An invitation does not guarantee availability.</p>
+        <button class="btn btn--primary" type="submit" data-start disabled>Start session</button>
+      </form>
+      <button class="btn" type="button" data-end disabled>End session &amp; clear</button>
+      <p class="revia-hint">One reply at a time. Requests expire after two minutes, including queue time. Sessions expire after 15 idle or 30 total minutes; restarting or refreshing ends this conversation.</p>
+    </aside>
+    <section class="revia-panel revia-chat" aria-labelledby="revia-chat-title">
+      <div class="revia-chat-heading"><h2 id="revia-chat-title">Your conversation</h2><span>Text only</span></div>
+      <p data-progress role="status" aria-live="polite" aria-atomic="true">Start a session when Revia is online.</p>
+      <div class="revia-transcript" data-transcript role="log" aria-label="Conversation transcript" aria-live="polite" aria-relevant="additions" tabindex="0">
+        <p class="revia-empty" data-empty>No conversation yet. Replies appear here only after Revia completes them.</p>
+      </div>
+      <form data-message-form>
+        <label for="revia-message">Your message</label>
+        <textarea id="revia-message" rows="4" aria-describedby="revia-input-help revia-count" disabled></textarea>
+        <div class="revia-input-meta"><p id="revia-input-help" class="revia-hint">Enter to send · Shift+Enter for a new line</p><span id="revia-count" class="revia-hint" data-count>0 / 2,000 characters</span></div>
+        <div class="revia-controls">
+          <button class="btn btn--primary" type="submit" data-send disabled>Send message</button>
+          <button class="btn" type="button" data-cancel disabled>Cancel reply</button>
+          <button class="btn" type="button" data-retry hidden>Retry same message</button>
+        </div>
+      </form>
+    </section>
+  </div>
+  <section class="revia-privacy" aria-labelledby="revia-privacy-title">
+    <h2 id="revia-privacy-title">Before you start</h2>
+    <p>Use non-sensitive demo input. Your text travels over HTTPS through a relay to the developer’s computer; the relay can read it. This is not end-to-end encrypted. The operator and hosting infrastructure may have visibility into traffic.</p>
+    <p>Guest conversations use temporary, isolated context and are not stored as durable owner memory. Application-owned guest data is cleared on end or expiry; hosting/CDN access logs have their own retention policies. This page keeps the session token in memory only. Ending the session clears this transcript; browser or device software may retain its own copies.</p>
+    <p>The website cannot control your computer or the developer’s computer. Guests have no access to desktop actions, private memory, screen or camera content, files, or other conversations. Replies are generated AI output and can be inaccurate.</p>
+    <p>When live chat is offline, explore the source and architecture above. No recorded exchange is presented as a live reply.</p>
+  </section>
+</section>

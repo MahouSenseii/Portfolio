@@ -6,6 +6,7 @@ const VALID_PAGES = new Set([
   'knowledge.html',
   'resume.html',
   'contact.html',
+  'revia.html',
 ]);
 
 export function normalizePage(value = '') {

@@ -20,6 +20,11 @@ export function safeHttpUrl(value) {
   }
 }
 
+/** Internal CTAs are explicitly allowlisted, independently of external URLs. */
+export function safeInternalRoute(value) {
+  return value === '#revia.html' ? value : '';
+}
+
 export function getVideoEmbedUrl(value) {
   const safeUrl = safeHttpUrl(value);
   if (!safeUrl) return '';
